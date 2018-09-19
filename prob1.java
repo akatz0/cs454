@@ -91,7 +91,7 @@ public class prob1{
 
 		int[][] AtoTheNthPower = aToTheN(transMatrix);
 
-		int[][] finalMatrix = multiply(multiply(startStates,(aToTheN(transMatrix))),acceptStates);
+		int[][] finalMatrix = multiply(multiply(startStates,AtoTheNthPower),acceptStates);
     }
         //TODO: test output
     // method to raise transMatrix to power of n
