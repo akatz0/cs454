@@ -15,46 +15,47 @@ public class prob1{
 		int[][1] = next state on input b
 		int[][2] = next state on input c
 	**/
-	public static int[][] transitionTable = {{3,4,5}, /*start state ‘a’ */
-			{6,7,8}, /* state ‘b’*/
-			{9,10,11}, /* state ‘c’*/
-			{37,12,13}, /* state 3 -- state ‘aa’*/
-			{14,15,16}, /* state ‘ab’*/
-			{17,18,19}, /* state ‘ac’*/
-			{20,21,22}, /* state ‘ba’*/
-			{23,37,24}, /* state ‘bb’*/
-			{25,26,27}, /* state ‘bc’*/
-			{28,29,30}, /* state ‘ca’*/
-			{31,32,33}, /* state ‘cb’*/
-			{34,35,37}, /* state ‘cc’*/
+	public static int[][] transitionTable = {{1,2,3} // start state
+			{4,5,6}, /* 1 -- state ‘a’ */
+			{7,8,9}, /* 2--- state ‘b’*/
+			{10,11,12}, /* 3 -- state ‘c’*/
+			{37,13,14}, /* 4--- state ‘aa’*/
+			{15,16,17}, /* 5 state ‘ab’*/
+			{18,19,20}, /* 6 state ‘ac’*/
+			{21,22,23}, /* 7 state ‘ba’*/
+			{24,37,25}, /* 8 state ‘bb’*/
+			{26,27,28}, /* 9 state ‘bc’*/
+			{29,30,31}, /* 10 state ‘ca’*/
+			{32,33,34}, /* 11 state ‘cb’*/
+			{35,36,37}, /* 12 state ‘cc’*/
 		/* 3 letter states*/
 		/* skipping unnecessary state aaa*/
-			{14,15,16}, /* state 12 -- state ‘aab’*/
-			{17,18,19}, /* state ‘aac’*/
-			{20,21,22}, /* state ‘aba’*/
-			{23,37,24}, /* state 15 -- state ‘abb’*/
-			{25,26,27}, /* state ‘abc’*/
-			{28,29,30}, /* state ‘aca’*/
-			{31,32,33}, /* state ‘acb’*/
-			{34,35,37}, /* state ‘acc’*/
-			{37,12,13}, /* state 20 -- state ‘baa’*/
-			{14,15,16}, /* state ‘bab’*/
-			{17,18,19}, /* state ‘bac’*/
-			{20,21,22}, /* state 23 -- state ‘bba’*/
+			{15,16,17}, /* 13 -- state ‘aab’*/
+			{18,19,20}, /* 14 -- state ‘aac’*/
+			{21,22,23}, /* 15 state ‘aba’*/
+			{37,24,25}, /* 16 state 15 -- state ‘abb’*/
+			{26,27,28}, /* 17 state ‘abc’*/
+			{29,30,31}, /* 18 state ‘aca’*/
+			{32,33,34}, /* 19 state ‘acb’*/
+			{35,36,37}, /* 20 state ‘acc’*/
+			{37,13,14}, /* 21 state 20 -- state ‘baa’*/
+			{15,16,17}, /* 22 state ‘bab’*/
+			{18,19,20}, /* 23 state ‘bac’*/
+			{21,22,23}, /* 24 -- state ‘bba’*/
 			/* skipping bbb*/
-			{25,26,27}, /* state 24 -- state ‘bbc’*/
-			{28,29,30}, /* state ‘bca’*/
-			{31,32,33}, /* state ‘bcb’*/
-			{34,35,37}, /* state ‘bcc’*/
-			{37,12,13}, /* state 28 -- state ‘caa’*/
-			{14,15,16}, /* state ‘cab’*/
-			{17,18,19}, /* state ‘cac’*/
-			{20,21,22}, /* state ‘cba’*/
-			{23,37,24}, /* state ‘cbb’*/
-			{25,26,27}, /* state ‘cbc’*/
-			{28,29,30}, /* state ‘cca’*/
-			{31,32,33}, /* state ‘ccb’*/
-			{0,0,0},{37,37,37}};
+			{26,27,28}, /* 25 -- state ‘bbc’*/
+			{29,30,31}, /* 26 state ‘bca’*/
+			{32,33,34}, /* 27 state ‘bcb’*/
+			{35,36,37}, /* 28 state ‘bcc’*/
+			{37,13,14}, /* 29 state 28 -- state ‘caa’*/
+			{15,16,17}, /* 30 state ‘cab’*/
+			{18,19,20}, /* 31 state ‘cac’*/
+			{21,22,23}, /* 32 state ‘cba’*/
+			{37,24,25}, /* 33 state ‘cbb’*/
+			{26,27,28}, /* 34 state ‘cbc’*/
+			{29,30,31}, /* 35 state ‘cca’*/
+			{32,33,34}, /* 36 state ‘ccb’*/
+			{37,37,37}}; /* 37 -- fail state */
 
 	public static void main(String[] args){
 
