@@ -7,7 +7,7 @@ public class prob1{
     // 1 0 0 0 0 ... 0
     public static int[][] startStates = {};
 
-    // 0 0 0 0 0 ... 1
+    // 1 1 1 1 1 ... 0
     public static int[][] acceptStates = {};
 
 	/** 38 states, 3 letters in the language 
@@ -80,9 +80,9 @@ public class prob1{
 
         // initializes accepting states
         for (int i = 0; i < transitionTable.length - 1; i++) {
-            acceptStates[0][i] = 0;
+            acceptStates[0][i] = 1;
         }
-        acceptStates[0][transitionTable.length-1] = 1;
+        acceptStates[0][transitionTable.length-1] = 0;
 
 
         //TODO: matrix multiplication startStates . transMatrix ^ n . acceptStates
