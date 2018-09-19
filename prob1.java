@@ -1,3 +1,6 @@
+import java.math.BigInteger;
+import java.math.
+import java.util.Arrays;int
 
 public class prob1{
 
@@ -15,7 +18,8 @@ public class prob1{
 		int[][1] = next state on input b
 		int[][2] = next state on input c
 	**/
-	public static int[][] transitionTable = {{1,2,3} // start state
+	public static int[][] transitionTable = {
+			{1,2,3}, /* // start state*/
 			{4,5,6}, /* 1 -- state ‘a’ */
 			{7,8,9}, /* 2--- state ‘b’*/
 			{10,11,12}, /* 3 -- state ‘c’*/
@@ -85,13 +89,56 @@ public class prob1{
         }
         acceptStates[0][transitionTable.length-1] = 0;
 
+		int[][] AtoTheNthPower = aToTheN(transMatrix);
 
-        //TODO: matrix multiplication startStates . transMatrix ^ n . acceptStates
+		int[][] finalMatrix = multiply(multiply(startStates,(aToTheN(transMatrix))),acceptStates);
+    }
+        //TODO: test output
+    // method to raise transMatrix to power of n
+    public static int[][] aToTheN(int[][] a) {
+        int[][] b = a;
+        for (int i = 0; i < a.length - 1; i++) {
+            b = multiply(a,b);
+        }
+        return b;
+    }
 
+    // array-matrix multiplication (d = A * M)
+    public static int[] AmultiplyM(int[] a, int[][] b) {
+        int m = b.length;
+        int n = b[0].length;
+        if (a.length != m) throw new RuntimeException("Illegal matrix dimensions.");
+        int[] d = new int[n];
+        for (int j = 0; j < n; j++)
+            for (int i = 0; i < m; i++)
+                d[j] += b[i][j] * a[i];
+        return d;
+    }
 
-
+    // matrix-array multiplication (c = M * A)
+    public static int[] MmultiplyV(int[][] ma, int[] a) {
+        int m = ma.length;
+        int n = ma[0].length;
+        int[] c = new int[m];
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++)
+                c[i] += ma[i][j] * a[j];
+        return c;
+    }
+	// method to multiply two 2D matrices
+	public static int[][] multiply(int[][] a, int[][] b) {
+		int m1 = a.length;
+		int n1 = a[0].length;
+		int m2 = b.length;
+		int n2 = b[0].length;
+		if (n1 != m2) throw new RuntimeException("Illegal matrix dimensions.");
+		int[][] c = new int[m1][n2];
+		for (int i = 0; i < m1; i++)
+			for (int j = 0; j < n2; j++)
+				for (int k = 0; k < n1; k++)
+					c[i][j] += a[i][k] * b[k][j];
+		return c;
 	}
-
 
 }
 
