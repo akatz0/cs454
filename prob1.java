@@ -107,7 +107,6 @@ public class prob1{
     public static int[] AmultiplyM(int[] a, int[][] b) {
         int m = b.length;
         int n = b[0].length;
-        if (a.length != m) throw new RuntimeException("Illegal matrix dimensions.");
         int[] d = new int[n];
         for (int j = 0; j < n; j++)
             for (int i = 0; i < m; i++)
