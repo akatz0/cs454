@@ -1,6 +1,15 @@
 
 public class prob1{
 
+    // transitional matrix, counts how many transitions between each state
+    public static int[][] transMatrix = {};
+
+    // 1 0 0 0 0 ... 0
+    public static int[][] startStates = {};
+
+    // 0 0 0 0 0 ... 1
+    public static int[][] acceptStates = {};
+
 	/** 38 states, 3 letters in the language 
 		int[][0] = next state on input a
 		int[][1] = next state on input b
@@ -49,11 +58,36 @@ public class prob1{
 
 	public static void main(String[] args){
 
-		for (int k=0; k<transitionTable.length; k++) {
-			for (int j=0; j<3; j++) {
-				System.out.println("k "+k+ " j " + j + " cell "+transitionTable[k][j]);
-			}
-		}
+	    // initialize 0s in transitional matrix
+		for (int j = 0; j < transitionTable.length; j++) {
+            for (int k = 0; k < transitionTable.length; k++) {
+                transMatrix[j][k] = 0;
+            }
+        }
+
+        // counts amount of transitions from each states and updates 2D list
+        for (int j = 0; j < transitionTable.length; j++) {
+            for (int k = 0; k < 3; k++) {
+                transMatrix[j][transitionTable[j][k]]++;
+            }
+        }
+
+        // initializes start state
+        startStates[0][0] = 1;
+        for (int i = 1; i < transitionTable.length; i++) {
+            startStates[i][0] = 0;
+        }
+
+        // initializes accepting states
+        for (int i = 0; i < transitionTable.length - 1; i++) {
+            acceptStates[0][i] = 0;
+        }
+        acceptStates[0][transitionTable.length-1] = 1;
+
+
+        //TODO: matrix multiplication startStates . transMatrix ^ n . acceptStates
+
+
 
 	}
 
