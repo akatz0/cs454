@@ -5,13 +5,13 @@ import java.util.Arrays;
 public class prob1{
 
     // transitional matrix, counts how many transitions between each state
-    public static int[][] transMatrix = {};
+    public static int[][] transMatrix;
 
     // 1 0 0 0 0 ... 0
-    public static int[][] startStates = {};
+    public static int[][] startStates;
 
     // 1 1 1 1 1 ... 0
-    public static int[][] acceptStates = {};
+    public static int[][] acceptStates;
 
 	/** 38 states, 3 letters in the language 
 		int[][0] = next state on input a
@@ -61,10 +61,22 @@ public class prob1{
 			{32,33,34}, /* 36 state ‘ccb’*/
 			{37,37,37}}; /* 37 -- fail state */
 
-	public static int main(int n){
+	//Helper method to print out the contents of a 2D integer matrix
+	public static void print2DMatrix(int[][] testMatrix){
+		for (int j = 0; j < testMatrix.length; j++) {
+            for (int k = 0; k < testMatrix[j].length; k++) {
+                System.out.println("Row "+j+" Col "+k+ " : "+ testMatrix[j][k]);
+            }
+        }
+	}
+
+	public static void runProblem1(int n){
+		int MATRIX_SIZE = 38;
+		int[][] transMatrix = new int[MATRIX_SIZE][MATRIX_SIZE]; 
+
 	    // initialize 0s in transitional matrix
-		for (int j = 0; j < transitionTable.length; j++) {
-            for (int k = 0; k < transitionTable.length; k++) {
+		for (int j = 0; j < transMatrix.length; j++) {
+            for (int k = 0; k < transMatrix[j].length; k++) {
                 transMatrix[j][k] = 0;
             }
         }
@@ -77,23 +89,28 @@ public class prob1{
         }
 
         // initializes start state
+        int[][] startStates = new int[1][MATRIX_SIZE]; //one row, n columns
         startStates[0][0] = 1;
-        for (int i = 1; i < transitionTable.length; i++) {
-            startStates[i][0] = 0;
+        for (int i = 1; i < startStates.length; i++) {
+            startStates[0][i] = 0;
         }
 
         // initializes accepting states
-        for (int i = 0; i < transitionTable.length - 1; i++) {
-            acceptStates[0][i] = 1;
+        int[][] acceptStates = new int[MATRIX_SIZE][1]; //n rows, 1 column
+        for (int i = 0; i < acceptStates.length - 1; i++) {
+            acceptStates[i][0] = 1;
         }
-        acceptStates[0][transitionTable.length-1] = 0;
+        acceptStates[n-1][0] = 0;
 
-		int[][] AtoTheNthPower = aToTheN(transMatrix, n);
+		int[][] atoTheNthPower = aToTheN(transMatrix, n);
 
-		int[][] finalMatrix = multiply(multiply(startStates,AtoTheNthPower),acceptStates);
+		int[][] finalMatrix = multiply(multiply(startStates,atoTheNthPower),acceptStates);
+		print2DMatrix(finalMatrix);
+	}
 
-		// return answer
-		return finalMatrix[0][0];
+	public static void main(String[] args){
+
+		runProblem1(20);
     }
         //TODO: test output
     // method to raise transMatrix to power of n
@@ -128,10 +145,10 @@ public class prob1{
     }
 	// method to multiply two 2D matrices
 	public static int[][] multiply(int[][] a, int[][] b) {
-		int m1 = a.length;
-		int n1 = a[0].length;
-		int m2 = b.length;
-		int n2 = b[0].length;
+		int m1 = a.length; // a rows
+		int n1 = a[0].length; // a columns
+		int m2 = b.length; // b rows
+		int n2 = b[0].length; // b columns
 		if (n1 != m2) throw new RuntimeException("Illegal matrix dimensions.");
 		int[][] c = new int[m1][n2];
 		for (int i = 0; i < m1; i++)
