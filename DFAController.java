@@ -31,6 +31,15 @@ public class DFAController {
             if ( n > 0 && n < 301){
                // Temporary echo until problem is implemented
               input.printf("You entered "+nStr);
+
+              // New prob1 object to access prob1 main
+              prob1 P = new prob1();
+
+              // Call prob1 main passing it user entered n
+              int answer = P.main(n);
+
+              // print answer returned by prob1 main
+              input.printf("Answer %d", answer);
             }
          } else if(problemSelection.equals("2")){
             String kStr = input.readLine("Enter a k value: ");

@@ -1,6 +1,6 @@
 import java.math.BigInteger;
-import java.math.
-import java.util.Arrays;int
+import java.math.*;
+import java.util.Arrays;
 
 public class prob1{
 
@@ -61,8 +61,7 @@ public class prob1{
 			{32,33,34}, /* 36 state ‘ccb’*/
 			{37,37,37}}; /* 37 -- fail state */
 
-	public static void main(String[] args){
-
+	public static int main(int n){
 	    // initialize 0s in transitional matrix
 		for (int j = 0; j < transitionTable.length; j++) {
             for (int k = 0; k < transitionTable.length; k++) {
@@ -89,15 +88,18 @@ public class prob1{
         }
         acceptStates[0][transitionTable.length-1] = 0;
 
-		int[][] AtoTheNthPower = aToTheN(transMatrix);
+		int[][] AtoTheNthPower = aToTheN(transMatrix, n);
 
 		int[][] finalMatrix = multiply(multiply(startStates,AtoTheNthPower),acceptStates);
+
+		// return answer
+		return finalMatrix[0][0];
     }
         //TODO: test output
     // method to raise transMatrix to power of n
-    public static int[][] aToTheN(int[][] a) {
+    public static int[][] aToTheN(int[][] a, int n) {
         int[][] b = a;
-        for (int i = 0; i < a.length - 1; i++) {
+        for (int i = 0; i < n; i++) {
             b = multiply(a,b);
         }
         return b;
