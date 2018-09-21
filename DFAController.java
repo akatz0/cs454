@@ -46,6 +46,15 @@ public class DFAController {
             String pdStr = input.readLine("Enter a permitted digits (delimited by spaces: ");
                // Temporary echo until problem is implemented
               input.printf("You entered k="+kStr + " permitted digits - "+pdStr);
+              String[] digits = pdStr.split(" ");
+              int[] nums = new int[digits.length];
+              ArrayList<Integer> a = new ArrayList<Integer>();
+              for (int i=0; i< digits.length; i++) {
+                nums[i] = Integer.parseInt(digits[i]);
+                a.add(new Integer(digits[i]));
+              }
+              prob2 p2 = new prob2();
+              p2.runProblem2(Integer.parseInt(kStr), a);
             
          }
          else{ input.printf("This selection is invalid. %n");}
