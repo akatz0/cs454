@@ -41,6 +41,7 @@ public class prob2{
             digitIndex=0;
         }
 
+        minString(modMatrix2, n, digitsAllowed);
 	}
 
 	public static void minString(int[][] delta, int n, ArrayList<Integer> digitsAllowed){
@@ -50,13 +51,22 @@ public class prob2{
 		// what are the accept states??
 		boolean[] acceptStates = new boolean[n];
 
+		for (boolean a : acceptStates) {
+		    a = false;
+        }
+        // The only accepting state is the initial state
+        acceptStates[0] = true;
+
 		for (boolean v : visited ) {
 			v = false;
 		}
 
 		LinkedList<Integer> q = new LinkedList<Integer>();
-		LinkedList<Integer> label = new LinkedList<Integer>();
-		LinkedList<Integer> parent = new LinkedList<Integer>();
+		// LinkedList<Integer> label = new LinkedList<Integer>();
+		// LinkedList<Integer> parent = new LinkedList<Integer>();
+        int[] label = new int[n];
+        int[] parent = new int[n];
+
 		q.add(0);
 		visited[0] = true;
 
@@ -65,15 +75,19 @@ public class prob2{
 			for(int k=0; k<digitsAllowed.size(); k++){
 				int next = delta[current][k];
 				if(acceptStates[next]){
-					label.add(next, digitsAllowed.get(k));
-					parent.add(next, current);
+					// label.add(next, digitsAllowed.get(k));
+					// parent.add(next, current);
+                    label[next] = digitsAllowed.get(k);
+                    parent[next] = current;
 					found = true;
 					break;
 				} else {
 					if(!visited[next]){
-						parent.add(next, current);
-						visited[next] = true;
-						label.add(next, digitsAllowed.get(k));
+						// parent.add(next, current);
+                        parent[next] = current;
+                        visited[next] = true;
+						// label.add(next, digitsAllowed.get(k));
+                        label[next] = digitsAllowed.get(k);
 						q.add(next);
 					}
 				}
@@ -86,10 +100,14 @@ public class prob2{
 		} else {
 			System.out.println("Solution found");
 			//Right now this just loops backwards; might need more complicated traversal
-			for(int z=parent.size()-1; z>=0; z--){
+			/*for(int z=parent.size()-1; z>=0; z--){
 				int current = (int)parent.get(z);
 				System.out.print(label.get(z));
-			}
+			}*/
+			// TODO: Print the correct answer
+			for (int z = parent.length - 1; z >= 0; z--) {
+			    System.out.print(label[parent[z]]);
+            }
 		}
 
 	}
