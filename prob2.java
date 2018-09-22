@@ -3,7 +3,7 @@ import java.math.*;
 
 /**
 Problem 2:
-Write a function MinString that takes as input a DFA and outputs a string w of shortest 
+Write a function minString that takes as input a DFA and outputs a string w of shortest 
 length (lexicographically first in case of more than one string) accepted by the DFA. 
  */
 
@@ -29,7 +29,7 @@ public class prob2{
 			}			
 		}
 
-		//Attempting to re-write transition array with only columns for the allowed digits
+		//Copy only columns of the transition array with the allowed digits
 		int digitIndex = 0;
 		int[][] modMatrix2 = new int[n][digitsAllowed.size()];
 		for (int j = 0; j < modMatrix2.length; j++) {
@@ -40,6 +40,57 @@ public class prob2{
 			}
             digitIndex=0;
         }
+
+	}
+
+	public static void minString(int[][] delta, int n, ArrayList<Integer> digitsAllowed){
+
+		boolean found = false;
+		boolean[] visited = new boolean[n];
+		// what are the accept states??
+		boolean[] acceptStates = new boolean[n];
+
+		for (boolean v : visited ) {
+			v = false;
+		}
+
+		LinkedList<Integer> q = new LinkedList<Integer>();
+		LinkedList<Integer> label = new LinkedList<Integer>();
+		LinkedList<Integer> parent = new LinkedList<Integer>();
+		q.add(0);
+		visited[0] = true;
+
+		while(!q.isEmpty()){
+			int current = (int)q.removeFirst(); //cast Integer down to int
+			for(int k=0; k<digitsAllowed.size(); k++){
+				int next = delta[current][k];
+				if(acceptStates[next]){
+					label.add(next, digitsAllowed.get(k));
+					parent.add(next, current);
+					found = true;
+					break;
+				} else {
+					if(!visited[next]){
+						parent.add(next, current);
+						visited[next] = true;
+						label.add(next, digitsAllowed.get(k));
+						q.add(next);
+					}
+				}
+
+			}
+		}
+
+		if(!found){
+			System.out.println("No solution could be found");
+		} else {
+			System.out.println("Solution found");
+			//Right now this just loops backwards; might need more complicated traversal
+			for(int z=parent.size()-1; z>=0; z--){
+				int current = (int)parent.get(z);
+				System.out.print(label.get(z));
+			}
+		}
 
 	}
 
