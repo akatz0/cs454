@@ -19,7 +19,7 @@ public class prob2{
 		// n rows, only columns for the digits allowed
 		// even though we expect a big number we can use an int array because we will be 
 		// builing the number using a breadth first search and not using math functions
-		int[][] modMatrix = new int[n][9];
+		int[][] modMatrix = new int[n][10];
 		for (int i=0; i<modMatrix.length; i++) {
 			for (int j=0; j<modMatrix[0].length; j++) {
 				modMatrix[i][j] = counter++;
@@ -33,11 +33,11 @@ public class prob2{
 		int digitIndex = 0;
 		int[][] modMatrix2 = new int[n][digitsAllowed.size()];
 		for (int j = 0; j < modMatrix2.length; j++) {
-            for (int k = 0; k < modMatrix2[j].length; k++) {
-            	if (digitsAllowed.contains(k)){
-            		modMatrix2[j][digitIndex++] = modMatrix[j][k];
-            	}
-            }
+			for(Integer io : digitsAllowed ){
+				int d = (int)io;
+				modMatrix2[j][digitIndex] = modMatrix[j][d];
+				digitIndex++;
+			}
             digitIndex=0;
         }
 
