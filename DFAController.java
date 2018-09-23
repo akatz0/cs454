@@ -43,9 +43,7 @@ public class DFAController {
             }
          } else if(problemSelection.equals("2")){
             String kStr = input.readLine("Enter a k value: ");
-            String pdStr = input.readLine("Enter a permitted digits (delimited by spaces: ");
-               // Temporary echo until problem is implemented
-              input.printf("You entered k="+kStr + " permitted digits - "+pdStr);
+            String pdStr = input.readLine("Enter a permitted digits (delimited by spaces): ");
               String[] digits = pdStr.split(" ");
               int[] nums = new int[digits.length];
               ArrayList<Integer> a = new ArrayList<Integer>();

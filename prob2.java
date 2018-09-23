@@ -48,7 +48,6 @@ public class prob2{
 
 		boolean found = false;
 		boolean[] visited = new boolean[n];
-		// what are the accept states??
 		boolean[] acceptStates = new boolean[n];
 
 		for (boolean a : acceptStates) {
@@ -70,7 +69,7 @@ public class prob2{
 		q.add(0);
 		visited[0] = true;
 
-		while(!q.isEmpty()){
+		while(!q.isEmpty() && !found){
 			int current = (int)q.removeFirst(); //cast Integer down to int
 			for(int k=0; k<digitsAllowed.size(); k++){
 				int next = delta[current][k];
@@ -99,15 +98,15 @@ public class prob2{
 			System.out.println("No solution could be found");
 		} else {
 			System.out.println("Solution found");
-			//Right now this just loops backwards; might need more complicated traversal
-			/*for(int z=parent.size()-1; z>=0; z--){
-				int current = (int)parent.get(z);
-				System.out.print(label.get(z));
-			}*/
-			// TODO: Print the correct answer
-			for (int z = parent.length - 1; z >= 0; z--) {
-			    System.out.print(label[parent[z]]);
+			StringBuffer solution = new StringBuffer();
+			int z = 0;
+			while( z < parent.length ) {
+			    solution.append(label[z]);
+			    z = parent[z]; 
+			    //If the next z will be 0 again, we've reached the end of the path
+			    if (z == 0) break;
             }
+            System.out.println(solution.reverse());
 		}
 
 	}
