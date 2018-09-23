@@ -1,17 +1,22 @@
-import java.math.BigInteger;
 import java.math.*;
+import java.math.BigInteger;
+
 import java.util.Arrays;
+import java.lang.Object;
+import java.util.Comparator;
+
+
 
 public class prob1{
 
     // transitional matrix, counts how many transitions between each state
-    public static int[][] transMatrix;
+    public static BigInteger[][] transMatrix;
 
     // 1 0 0 0 0 ... 0
-    public static int[][] startStates;
+    public static BigInteger[][] startStates;
 
     // 1 1 1 1 1 ... 0
-    public static int[][] acceptStates;
+    public static BigInteger[][] acceptStates;
 
 	/** 38 states, 3 letters in the language 
 		int[][0] = next state on input a
@@ -62,7 +67,7 @@ public class prob1{
 			{37,37,37}}; /* 37 -- fail state */
 
 	//Helper method to print out the contents of a 2D integer matrix
-	public static void print2DMatrix(int[][] testMatrix){
+	public static void print2DMatrix(BigInteger[][] testMatrix){
 		for (int j = 0; j < testMatrix.length; j++) {
             for (int k = 0; k < testMatrix[j].length; k++) {
                 System.out.println("Row "+j+" Col "+k+ " : "+ testMatrix[j][k]);
@@ -72,39 +77,39 @@ public class prob1{
 
 	public static void runProblem1(int n){
 		int MATRIX_SIZE = 38;
-		int[][] transMatrix = new int[MATRIX_SIZE][MATRIX_SIZE]; 
+		BigInteger[][] transMatrix = new BigInteger[MATRIX_SIZE][MATRIX_SIZE];
 
 	    // initialize 0s in transitional matrix
 		for (int j = 0; j < transMatrix.length; j++) {
             for (int k = 0; k < transMatrix[j].length; k++) {
-                transMatrix[j][k] = 0;
+                transMatrix[j][k] = BigInteger.valueOf(0);
             }
         }
 
         // counts amount of transitions from each states and updates 2D list
         for (int j = 0; j < transitionTable.length; j++) {
             for (int k = 0; k < 3; k++) {
-                transMatrix[j][transitionTable[j][k]]++;
+                transMatrix[j][transitionTable[j][k]].add(BigInteger.valueOf(1));
             }
         }
 
         // initializes start state
-        int[][] startStates = new int[1][MATRIX_SIZE]; //one row, n columns
-        startStates[0][0] = 1;
+        BigInteger[][] startStates = new BigInteger[1][MATRIX_SIZE]; //one row, n columns
+        startStates[0][0] = BigInteger.valueOf(1);
         for (int i = 1; i < startStates.length; i++) {
-            startStates[0][i] = 0;
+            startStates[0][i] = BigInteger.valueOf(0);
         }
 
         // initializes accepting states
-        int[][] acceptStates = new int[MATRIX_SIZE][1]; //n rows, 1 column
+        BigInteger[][] acceptStates = new BigInteger[MATRIX_SIZE][1]; //n rows, 1 column
         for (int i = 0; i < acceptStates.length - 1; i++) {
-            acceptStates[i][0] = 1;
+            acceptStates[i][0] = BigInteger.valueOf(1);
         }
-        acceptStates[n-1][0] = 0;
+        acceptStates[n-1][0] = BigInteger.valueOf(0);
 
-		int[][] atoTheNthPower = aToTheN(transMatrix, n);
+		BigInteger[][] atoTheNthPower = aToTheN(transMatrix, n);
 
-		int[][] finalMatrix = multiply(multiply(startStates,atoTheNthPower),acceptStates);
+		BigInteger[][] finalMatrix = (BigInteger[][]) multiplyBIM(multiplyBIM(startStates,atoTheNthPower),acceptStates);
 		print2DMatrix(finalMatrix);
 	}
 
@@ -114,47 +119,48 @@ public class prob1{
     }
         //TODO: test output
     // method to raise transMatrix to power of n
-    public static int[][] aToTheN(int[][] a, int n) {
-        int[][] b = a;
+    public static BigInteger[][] aToTheN(BigInteger[][] a, int n) {
+        BigInteger[][] b = a;
         for (int i = 0; i < n; i++) {
-            b = multiply(a,b);
+            b = multiplyBIM(a,b);
         }
         return b;
     }
 
     // array-matrix multiplication (d = A * M)
-    public static int[] AmultiplyM(int[] a, int[][] b) {
+    public static BigInteger[] AmultiplyM(BigInteger[] a, BigInteger[][] b) {
         int m = b.length;
         int n = b[0].length;
-        int[] d = new int[n];
+        BigInteger[] d = new BigInteger[n];
         for (int j = 0; j < n; j++)
-            for (int i = 0; i < m; i++)
-                d[j] += b[i][j] * a[i];
+            for (int i = 0; i < m; i++) {
+				d[j] = d[j].add(b[i][j].multiply(a[i]));
+			}
         return d;
     }
 
     // matrix-array multiplication (c = M * A)
-    public static int[] MmultiplyV(int[][] ma, int[] a) {
+    public static BigInteger[] MmultiplyV(BigInteger[][] ma, BigInteger[] a) {
         int m = ma.length;
         int n = ma[0].length;
-        int[] c = new int[m];
+        BigInteger[] c = new BigInteger[m];
         for (int i = 0; i < m; i++)
             for (int j = 0; j < n; j++)
-                c[i] += ma[i][j] * a[j];
+                c[i] = c[i].add(ma[i][j].multiply(a[j]));
         return c;
     }
 	// method to multiply two 2D matrices
-	public static int[][] multiply(int[][] a, int[][] b) {
+	public static BigInteger[][] multiplyBIM(BigInteger[][] a, BigInteger[][] b) {
 		int m1 = a.length; // a rows
 		int n1 = a[0].length; // a columns
 		int m2 = b.length; // b rows
 		int n2 = b[0].length; // b columns
 		if (n1 != m2) throw new RuntimeException("Illegal matrix dimensions.");
-		int[][] c = new int[m1][n2];
+		BigInteger[][] c = new BigInteger[m1][n2];
 		for (int i = 0; i < m1; i++)
 			for (int j = 0; j < n2; j++)
 				for (int k = 0; k < n1; k++)
-					c[i][j] += a[i][k] * b[k][j];
+					c[i][j] = c[i][j].add(a[i][k].multiply(b[k][j]));
 		return c;
 	}
 
