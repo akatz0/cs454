@@ -159,8 +159,9 @@ public class prob1{
 		BigInteger[][] c = new BigInteger[m1][n2];
 		for (int i = 0; i < m1; i++)
 			for (int j = 0; j < n2; j++)
-				for (int k = 0; k < n1; k++)
-					c[i][j] = c[i][j].add(a[i][k].multiply(b[k][j]));
+				for (int k = 0; k < n1; k++) {
+                    c[i][j] = a[i][k].multiply(b[k][j]).add(c[i][j]);
+                }
 		return c;
 	}
 
