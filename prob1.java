@@ -62,8 +62,9 @@ public class prob1{
 	public static void print2DMatrix(BigInteger[][] testMatrix){
 		for (int j = 0; j < testMatrix.length; j++) {
             for (int k = 0; k < testMatrix[j].length; k++) {
-                System.out.println("Row "+j+" Col "+k+ " : "+ testMatrix[j][k]);
+                System.out.print( testMatrix[j][k] + " ");
             }
+            System.out.println();
         }
 	}
 
@@ -88,7 +89,7 @@ public class prob1{
         // initializes start state
         BigInteger[][] startStates = new BigInteger[1][MATRIX_SIZE]; //one row, n columns
         startStates[0][0] = BigInteger.valueOf(1);
-        for (int i = 1; i < startStates.length; i++) {
+        for (int i = 1; i < MATRIX_SIZE; i++) {
             startStates[0][i] = BigInteger.valueOf(0);
         }
 
@@ -107,7 +108,14 @@ public class prob1{
 
 	public static void main(String[] args){
 
-		runProblem1(20);
+		System.out.println("n = 3, the output should be 24");
+		runProblem1(3);
+		System.out.println("n = 4, the output should be 36");
+		runProblem1(4);
+		System.out.println("n = 5, the output should be 72");
+		runProblem1(5);
+		System.out.println("n = 45, the output should be 2747581609272");
+		runProblem1(45);
     }
         //TODO: test output
     // method to raise transMatrix to power of n
@@ -156,7 +164,7 @@ public class prob1{
 		for (int i = 0; i < m1; i++)
 			for (int j = 0; j < n2; j++)
 				for (int k = 0; k < n1; k++) {
-				    if (a[i][k] != null)
+				    if (a[i][k] != null && b[k][j] != null)
 				        c[i][j] = c[i][j].add(a[i][k].multiply(b[k][j]));
                 }
 		return c;
