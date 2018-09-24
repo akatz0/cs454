@@ -121,7 +121,7 @@ public class prob1{
     // method to raise transMatrix to power of n
     public static BigInteger[][] aToTheN(BigInteger[][] a, int n) {
         BigInteger[][] b = a;
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n-1; i++) {
             b = multiplyBIM(a,b);
         }
         return b;
