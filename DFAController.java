@@ -3,6 +3,8 @@ import java.io.IOException;
 import java.util.*;
 
 /**
+Team Members: Darin Brown, Ariel Katz, and Jack Weatherford
+
 Problem 1:
 In any substring of length 4 of w, all three letters a, b and c occur at least once. For 
 example, strings like abbcaabca satisfy the property, but a string like bacaabbcabac

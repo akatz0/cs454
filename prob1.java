@@ -6,6 +6,14 @@ import java.util.Arrays;
 import java.lang.Object;
 import java.util.Comparator;
 
+/**
+Team Members: Darin Brown, Ariel Katz, and Jack Weatherford
+
+Problem 1:
+In any substring of length 4 of w, all three letters a, b and c occur at least once. For 
+example, strings like abbcaabca satisfy the property, but a string like bacaabbcabac
+does not satisfy the property since the substring a abb does not have a c. 
+*/
 
 
 public class prob1{

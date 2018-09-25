@@ -2,6 +2,8 @@ import java.util.*;
 import java.math.*;
 
 /**
+Team Members: Darin Brown, Ariel Katz, and Jack Weatherford
+
 Problem 2:
 Write a function minString that takes as input a DFA and outputs a string w of shortest 
 length (lexicographically first in case of more than one string) accepted by the DFA. 
