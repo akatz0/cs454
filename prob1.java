@@ -39,31 +39,31 @@ public class prob1{
 			{35,36,37}, /* 12 state ‘cc’*/
 		/* 3 letter states*/
 		/* skipping unnecessary state aaa*/
-			{15,16,17}, /* 13 -- state ‘aab’*/
-			{18,19,20}, /* 14 -- state ‘aac’*/
-			{21,22,23}, /* 15 state ‘aba’*/
-			{37,24,25}, /* 16 state 15 -- state ‘abb’*/
+			{37,16,17}, /* 13 -- state ‘aab’*/
+			{37,19,20}, /* 14 -- state ‘aac’*/
+			{37,22,23}, /* 15 state ‘aba’*/
+			{24,37,25}, /* 16 state -- state ‘abb’*/
 			{26,27,28}, /* 17 state ‘abc’*/
-			{29,30,31}, /* 18 state ‘aca’*/
+			{37,30,31}, /* 18 state ‘aca’*/
 			{32,33,34}, /* 19 state ‘acb’*/
 			{35,36,37}, /* 20 state ‘acc’*/
-			{37,13,14}, /* 21 state 20 -- state ‘baa’*/
-			{15,16,17}, /* 22 state ‘bab’*/
+			{37,13,14}, /* 21 state -- state ‘baa’*/
+			{15,37,17}, /* 22 state ‘bab’*/
 			{18,19,20}, /* 23 state ‘bac’*/
-			{21,22,23}, /* 24 -- state ‘bba’*/
+			{21,37,23}, /* 24 -- state ‘bba’*/
 			/* skipping bbb*/
-			{26,27,28}, /* 25 -- state ‘bbc’*/
+			{26,37,28}, /* 25 -- state ‘bbc’*/
 			{29,30,31}, /* 26 state ‘bca’*/
-			{32,33,34}, /* 27 state ‘bcb’*/
+			{32,37,34}, /* 27 state ‘bcb’*/
 			{35,36,37}, /* 28 state ‘bcc’*/
-			{37,13,14}, /* 29 state 28 -- state ‘caa’*/
+			{37,13,14}, /* 29 state -- state ‘caa’*/
 			{15,16,17}, /* 30 state ‘cab’*/
-			{18,19,20}, /* 31 state ‘cac’*/
+			{18,19,37}, /* 31 state ‘cac’*/
 			{21,22,23}, /* 32 state ‘cba’*/
-			{37,24,25}, /* 33 state ‘cbb’*/
-			{26,27,28}, /* 34 state ‘cbc’*/
-			{29,30,31}, /* 35 state ‘cca’*/
-			{32,33,34}, /* 36 state ‘ccb’*/
+			{24,37,25}, /* 33 state ‘cbb’*/
+			{26,27,37}, /* 34 state ‘cbc’*/
+			{29,30,37}, /* 35 state ‘cca’*/
+			{32,33,37}, /* 36 state ‘ccb’*/
 			{37,37,37}}; /* 37 -- fail state */
 
 	//Helper method to print out the contents of a 2D integer matrix
