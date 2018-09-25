@@ -103,10 +103,7 @@ public class prob1{
 
         // initializes accepting states
         BigInteger[][] acceptStates = new BigInteger[MATRIX_SIZE][1]; //n rows, 1 column
-		for (int i = 0; i < 13; i++) {
-			acceptStates[i][0] = BigInteger.valueOf(0);
-		}
-        for (int i = 13; i < acceptStates.length - 1; i++) {
+        for (int i = 0; i < acceptStates.length - 1; i++) {
             acceptStates[i][0] = BigInteger.valueOf(1);
         }
         acceptStates[MATRIX_SIZE-1][0] = BigInteger.valueOf(0);
