@@ -20,23 +20,22 @@ public class SlitherLinkMain {
       String problemSelection = input.readLine(prompt);
       while(!problemSelection.equals("3")){
 
+         String gridString = "";
          if(problemSelection.equals("1")){
-            String grid = input.readLine("Enter grid string: \n");
-            // Temporary echo until problem is implemented
-            input.printf("You entered "+grid +"\n");
+            gridString = input.readLine("Enter grid string: \n");
             
          } else if(problemSelection.equals("2")){
             String fileName = input.readLine("Enter file containing grid: \n");
             try {
-              String gridFile = readFile(fileName);
-              // Temporary echo until problem is implemented
-              input.printf("You entered "+gridFile +"\n");}
-            catch( IOException e){
+              gridString = readFile(fileName);
+            } catch( IOException e){
               System.out.println("There was an error reading the file "+ e);
             }
-         }
+        }
          else{ input.printf("This selection is invalid. %n");}
          input.printf("%n");
+         Grid board = new Grid(gridString);
+         board.print();
          problemSelection = input.readLine(prompt);
       }
       input.printf("Bye!%n");
