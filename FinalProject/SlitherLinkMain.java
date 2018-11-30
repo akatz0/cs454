@@ -35,7 +35,12 @@ public class SlitherLinkMain {
          else{ input.printf("This selection is invalid. %n");}
          input.printf("%n");
          Grid board = new Grid(gridString);
-         board.print();
+         // Call the main method leading the solution
+         if(board.solve()){
+            board.print();
+         } else {
+            System.out.println("No solution found");
+         }
          problemSelection = input.readLine(prompt);
       }
       input.printf("Bye!%n");
