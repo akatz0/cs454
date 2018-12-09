@@ -147,7 +147,7 @@ public class GridCell {
 
       // if entry exist in the table just re-use that solution
       if ( c != null) { update(c); return true; }
-      if (c.location == "FALSE") return false; // already determined this configuration has no valid solution
+      if (c != null && c.location == "FALSE") return false; // already determined this configuration has no valid solution
       // TODO will need to add capability to have multiple options for same key
 
       // the cell values are empty

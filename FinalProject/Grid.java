@@ -38,7 +38,7 @@ public class Grid {
     while (result){
       /** TODO -- when moving to solve next cell we need to make sure we copy values of duplicate edges */
       String temp = nextSnakeOption.pop();
-      if(temp == "EMPTY") return false; // if there are no more options to try then grid has no alternate solutinos
+      if(temp == "EMPTY") return false; // if there are no more options to try then grid has no alternate solutions
       currentIndex++;
       if(currentIndex >= gridList.size()){
         result=false;break;// stop the infinite loop
@@ -98,10 +98,10 @@ public class Grid {
       table.put("0_0_THREE", temp);
       table.put("0_0_FIVE", temp);
       temp = new GridCell(0, 1, 1);
-      temp.setT34 = true;
+      temp.setT34(true);
       temp.location = "FOUR";
       table.put("1_1_THREE", temp);
-      temp.setT34 = false;
+      temp.setT34(false);
       temp.location = "FALSE";
       table.put("1_1_ONE", temp);
       table.put("1_1_FIVE", temp);
