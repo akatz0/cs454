@@ -106,8 +106,147 @@ public class Grid {
       table.put("1_1_ONE", temp);
       table.put("1_1_FIVE", temp);
 
-      temp = new GridCell(0, 1, 2);// two valid solutions for each location, how will we store in table?
+      temp = new GridCell(0, 1, 3);
+      temp.setT12(true); // single top line and all three on bottom half
+      temp.setT35(true);
+      temp.setT56(true);
+      temp.setT46(true);
+      temp.location = "TWO"; //setting the final locations
+      temp.location2 = "FOUR";
+      table.put("1_3_ONE_THREE", temp); // only valid solution with these values and two locations
 
+      temp = new GridCell(0, 1, 3);
+      temp.setT13(true); 
+      temp.setT35(true);
+      temp.setT56(true);
+      temp.setT46(true);
+      temp.location = "THREE"; //setting the final location
+      table.put("1_3_ONE", temp); // only valid solution with these values and location
+
+      temp = new GridCell(0, 1, 3);
+      temp.setT35(true);
+      temp.setT56(true);
+      temp.setT46(true);
+      temp.setT24(true);
+      temp.location = "TWO"; 
+      table.put("1_3_THREE", temp); // only valid solution with these values and location
+
+      /* For numbering of temps see image file top2_bneg1.jpg */
+      ArrayList<GridCell> t2bneg1 = new ArrayList<GridCell>(); //TODO add to hash table, key "2_-1_ONE"
+      GridCell temp1 = new GridCell(0, 2, -1);
+      temp1.setT13(true); 
+      temp1.setT34(true);
+      temp1.location = "FOUR"; 
+      t2bneg1.add(temp1);
+
+      GridCell temp2 = new GridCell(0, 2, -1);
+      temp2.setT12(true); 
+      temp2.setT24(true);
+      temp2.location = "FOUR"; 
+      t2bneg1.add(temp2);
+
+      GridCell temp3 = new GridCell(0, 2, -1);
+      temp3.setT13(true); 
+      temp3.setT35(true);
+      temp3.setT56(true); 
+      temp3.setT46(true);
+      temp3.setT24(true);
+      temp3.location = "TWO"; 
+      t2bneg1.add(temp3);
+
+      GridCell temp4 = new GridCell(0, 2, -1);
+      temp4.setT12(true); 
+      temp4.setT24(true);
+      temp4.setT46(true);
+      temp4.location = "SIX"; 
+      t2bneg1.add(temp4);
+
+      /// add list to hash table here
+
+      ArrayList<GridCell> t2bneg1_loc3 = new ArrayList<GridCell>(); //TODO add to hash table, key "2_-1_THREE"
+      GridCell temp8 = new GridCell(0, 2, -1);
+      temp8.setT12(true); 
+      temp8.setT24(true);
+      temp8.location = "FOUR"; 
+      t2bneg1_loc3.add(temp8);
+
+      GridCell temp12 = new GridCell(0, 2, -1);
+      temp12.setT24(true); 
+      temp12.setT34(true);
+      temp12.location = "TWO"; 
+      t2bneg1_loc3.add(temp12);
+
+      /// add array to hash table
+      ArrayList<GridCell> t2bneg1_loc5 = new ArrayList<GridCell>(); //TODO add to hash table, key "2_-1_FIVE"
+      GridCell temp7 = new GridCell(0, 2, -1);
+      temp7.setT35(true);
+      temp7.setT34(true);
+      temp7.setT24(true);
+      t2bneg1_loc5.add(temp7);
+
+      GridCell temp10 = new GridCell(0, 2, -1);
+      temp10.setT35(true);
+      temp10.setT34(true);
+      temp10.setT24(true);
+      t2bneg1_loc5.add(temp10);
+      //add array to hash table
+
+      ArrayList<GridCell> t2bneg1_1_3 = new ArrayList<GridCell>(); //TODO add to hash table, key "2_-1_ONE_THREE"
+      GridCell temp5 = new GridCell(0, 2, -1);
+      temp5.setT12(true);
+      temp5.setT34(true);
+      temp5.location = "TWO";
+      temp5.location2 = "FOUR";
+      t2bneg1_1_3.add(temp5);
+
+      GridCell temp11 = new GridCell(0, 2, -1);
+      temp11.setT12(true);
+      temp11.setT24(true);
+      temp11.setT35(true);
+      temp11.setT56(true);
+      temp11.location = "FOUR";
+      temp11.location2 = "SIX";
+      t2bneg1_1_3.add(temp11);
+
+      //add array to hashtable
+
+      ArrayList<GridCell> t2bneg1_3_5 = new ArrayList<GridCell>(); //TODO add to hash table, key "2_-1_THREE_FIVE"
+      GridCell temp9 = new GridCell(0, 2, -1);
+      temp9.setT13(true);
+      temp9.setT12(true);
+      temp9.setT46(true);
+      temp9.setT56(true);
+      temp9.location = "TWO";
+      temp9.location2 = "SIX";
+      t2bneg1_3_5.add(temp9);
+
+      GridCell temp13 = new GridCell(0, 2, -1);
+      temp13.setT24(true);
+      temp13.setT34(true);
+      temp13.setT56(true);
+      temp13.location = "TWO";
+      temp13.location2 = "SIX";
+      t2bneg1_3_5.add(temp13);
+
+      ArrayList<GridCell> t2bneg1_1_5 = new ArrayList<GridCell>(); //TODO add to hash table, key "2_-1_ONE_FIVE"
+      GridCell temp6 = new GridCell(0, 2, -1);
+      temp6.setT12(true);
+      temp6.setT34(true);
+      temp6.setT35(true);
+      temp6.location = "TWO";
+      temp6.location2 = "FOUR";
+      t2bneg1_1_5.add(temp6);
+
+      temp = new GridCell(0, 2, -1); //This would ONLY work as the last cell...
+      temp.setT12(true);
+      temp.setT24(true);
+      temp.setT46(true);
+      temp.setT56(true);
+      temp.location = "ONE";
+      temp.location2 = "FIVE";
+      t2bneg1_1_5.add(temp);
+
+      //add array to hashtable
    }
 
 }
