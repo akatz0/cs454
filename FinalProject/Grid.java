@@ -161,6 +161,13 @@ public class Grid {
       temp4.location = "SIX"; 
       t2bneg1.add(temp4);
 
+      GridCell temp14 = new GridCell(0, 2, -1);
+      temp14.setT13(true); 
+      temp14.setT34(true);
+      temp14.setT46(true);
+      temp14.location = "SIX"; 
+      t2bneg1.add(temp14);
+
       /// add list to hash table here
 
       ArrayList<GridCell> t2bneg1_loc3 = new ArrayList<GridCell>(); //TODO add to hash table, key "2_-1_THREE"
@@ -182,12 +189,14 @@ public class Grid {
       temp7.setT35(true);
       temp7.setT34(true);
       temp7.setT24(true);
+      temp7.location = "TWO";
       t2bneg1_loc5.add(temp7);
 
       GridCell temp10 = new GridCell(0, 2, -1);
       temp10.setT35(true);
       temp10.setT34(true);
       temp10.setT24(true);
+      temp7.location = "TWO";
       t2bneg1_loc5.add(temp10);
       //add array to hash table
 
@@ -245,8 +254,171 @@ public class Grid {
       temp.location = "ONE";
       temp.location2 = "FIVE";
       t2bneg1_1_5.add(temp);
-
       //add array to hashtable
+
+      //top value 2, bottom value 0
+      temp = new GridCell(0, 2, 0);
+      temp.setT12(true);
+      temp.setT24(true);
+      temp.location = "FOUR";
+      table.put("2_0_ONE", temp);
+
+      temp = new GridCell(0, 2, 0);
+      temp.setT13(true);
+      temp.setT12(true);
+      temp.location = "TWO";
+      table.put("2_0_THREE", temp);
+
+      ///// top 2 bottom 1
+      /* For numbering of temps see image file top2_bneg1.jpg */
+      ArrayList<GridCell> t2b1 = new ArrayList<GridCell>(); //TODO add to hash table, key "2_1_ONE"
+      temp1 = new GridCell(0, 2, 1);
+      temp1.setT13(true); 
+      temp1.setT34(true);
+      temp1.location = "FOUR"; 
+      t2b1.add(temp1);
+
+      temp2 = new GridCell(0, 2, 1);
+      temp2.setT12(true); 
+      temp2.setT24(true);
+      temp2.location = "FOUR"; 
+      t2b1.add(temp2);
+
+      temp4 = new GridCell(0, 2, 1);
+      temp4.setT12(true); 
+      temp4.setT24(true);
+      temp4.setT46(true);
+      temp4.location = "SIX"; 
+      t2b1.add(temp4);
+
+      /// add list to hash table here
+
+      ArrayList<GridCell> t2b1_loc3 = new ArrayList<GridCell>(); //TODO add to hash table, key "2_1_THREE"
+      temp8 = new GridCell(0, 2, 1);
+      temp8.setT12(true); 
+      temp8.setT24(true);
+      temp8.setT56(true);
+      temp8.location = "FOUR"; 
+      t2b1_loc3.add(temp8);
+
+      temp12 = new GridCell(0, 2, 1);
+      temp12.setT24(true); 
+      temp12.setT34(true);
+      temp12.location = "TWO"; 
+      t2b1_loc3.add(temp12);
+      // add list to hash table
+
+      temp10 = new GridCell(0, 2, 1);
+      temp10.setT35(true);
+      temp10.setT34(true);
+      temp10.setT24(true);
+      table.put("2_1_FIVE", temp10);
+
+      temp5 = new GridCell(0, 2, 1);
+      temp5.setT12(true);
+      temp5.setT34(true);
+      temp5.location = "TWO";
+      temp5.location2 = "FOUR";
+      table.put("2_1_ONE_THREE", temp5);
+
+      // top value 2, bottom value 2
+      temp7 = new GridCell(0, 2, 2);
+      temp7.setT35(true);
+      temp7.setT34(true);
+      temp7.setT24(true);
+      temp7.location = "TWO";
+      table.put("2_2_FIVE", temp7);
+
+      temp14 = new GridCell(0, 2, 2);
+      temp14.setT13(true); 
+      temp14.setT34(true);
+      temp14.setT46(true);
+      temp14.location = "SIX"; 
+      table.put("2_2_ONE", temp14);
+
+      temp11 = new GridCell(0, 2, 2);
+      temp11.setT12(true);
+      temp11.setT24(true);
+      temp11.setT35(true);
+      temp11.setT56(true);
+      temp11.location = "FOUR";
+      temp11.location2 = "SIX";
+      table.put("2_2_ONE_THREE", temp11);
+
+      temp9 = new GridCell(0, 2, 2);
+      temp9.setT13(true);
+      temp9.setT12(true);
+      temp9.setT46(true);
+      temp9.setT56(true);
+      temp9.location = "TWO";
+      temp9.location2 = "SIX";
+      table.put("2_2_THREE_FIVE", temp9);
+
+      temp = new GridCell(0, 2, 2); //This would ONLY work as the last cell...
+      temp.setT12(true);
+      temp.setT24(true);
+      temp.setT46(true);
+      temp.setT56(true);
+      temp.location = "ONE";
+      temp.location2 = "FIVE";
+      table.put("2_2_ONE_FIVE", temp);
+
+      //top value 2, bottom value 3
+      temp3 = new GridCell(0, 2, 3);
+      temp3.setT13(true); 
+      temp3.setT35(true);
+      temp3.setT56(true); 
+      temp3.setT46(true);
+      temp3.setT24(true);
+      temp3.location = "TWO"; 
+      table.put("2_3_ONE", temp3);
+
+      //TODO end only options to be encoded...
+
+      GridCell temp25 = new GridCell(0, 3, 0);
+      temp25.setT13(true);
+      temp25.setT12(true);
+      temp25.setT24(true);
+      temp25.location = "FOUR";
+      table.put("3_0_THREE", temp25);
+
+      ArrayList<GridCell> t3bneg1_loc3 = new ArrayList<GridCell>(); //TODO add to hash table, key "3_-1_THREE"
+      GridCell temp27 = new GridCell(0, 3, -1);
+      temp27.setT13(true); 
+      temp27.setT12(true);
+      temp27.setT24(true);
+      temp27.setT46(true);
+      temp27.location = "SIX"; 
+      t3bneg1_loc3.add(temp27);
+
+      temp25 = new GridCell(0, 3, -1);
+      temp25.setT13(true);
+      temp25.setT12(true);
+      temp25.setT24(true);
+      temp25.location = "FOUR";
+      t3bneg1_loc3.add(temp25);
+      //add list to table
+
+      ArrayList<GridCell> t3bneg1_loc5 = new ArrayList<GridCell>(); //TODO add to hash table, key "3_-1_FIVE"
+      GridCell temp26 = new GridCell(0, 3, -1);
+      temp26.setT13(true); 
+      temp26.setT12(true);
+      temp26.setT24(true);
+      temp26.setT35(true);
+      temp26.location = "FOUR"; 
+      t3bneg1_loc5.add(temp26);
+
+      GridCell temp29 = new GridCell(0, 3, -1);
+      temp29.setT13(true); 
+      temp29.setT12(true);
+      temp29.setT24(true);
+      temp29.setT35(true);
+      temp29.setT46(true);
+      temp29.location = "SIX"; 
+      t3bneg1_loc5.add(temp29);
+      // add list to table
+      
+
    }
 
 }
