@@ -247,6 +247,110 @@ public class Grid {
       t2bneg1_1_5.add(temp);
 
       //add array to hashtable
+	  
+	  
+	  /* top3_bot1.jpg */
+	  temp = new GridCell(0, 3, 1);
+      temp.setT13(true);
+	  temp.setT34(true);
+	  temp.setT24(true);
+      temp.location = "TWO"; //setting the final location
+      table.put("3_1_ONE", temp); // only valid solution with these values and location
+
+	  temp = new GridCell(0, 3, 1);
+	  temp.setT12(true);
+	  temp.setT24(true);
+	  temp.setT34(true);
+	  temp.location = "ONE";
+	  temp.location2 = "THREE";
+	  table.put("3_1_ONE_THREE", temp);
+	  
+	  temp = new GridCell(0, 3, 1);
+	  temp.setT12(true);
+	  temp.setT13(true);
+	  temp.setT24(true);
+	  temp.setT35(true);
+	  temp.location = "FOUR";
+	  table.put("3_1_FIVE", temp);
+	  
+	  temp = new GridCell(0, 3, 1);
+	  temp.setT12(true);
+	  temp.setT13(true);
+	  temp.setT24(true);
+	  temp.setT56(true);
+	  temp.location = "FOUR";
+	  temp.location2 = "SIX";
+	  table.put("3_1_THREE_FIVE", temp);
+	  
+	  temp = new GridCell(0, 3, 1);
+	  temp.setT12(true);
+	  temp.setT13(true);
+	  temp.setT24(true);
+	  temp.setT46(true);
+	  temp.location = "SIX";
+	  table.put("3_1_THREE", temp);
+	  
+	  /* Not sure how to enter this one
+	  temp = new GridCell(0, 3, 1);
+	  temp.setT12(true);
+	  temp.setT13(true);
+	  temp.setT34(true);
+	  temp.location = "TWO";
+	  temp.location2 = "FOUR";
+	  table.put("3_1_TWO_FOUR", temp); */
+
+	  /* top3_bot2.jpg */
+	  temp = new GridCell(0, 3, 2);
+	  temp.setT12(true);
+	  temp.setT13(true);
+	  temp.setT24(true);
+	  temp.setT46(true);
+	  temp.setT56(true);
+	  temp.location = "THREE";
+	  temp.location2 = "FIVE";
+	  table.put("3_2_THREE_FIVE", temp);
+	  
+	  ArrayList<GridCell> t3b2_1_5 = new ArrayList<GridCell>(); //TODO add to hash table, key "3_2_ONE_FIVE"
+	  temp = new GridCell(0, 3, 2);
+	  temp.setT12(true);
+	  temp.setT24(true);
+	  temp.setT34(true);
+	  temp.setT35(true);
+	  temp.location = "ONE";
+	  temp.location2 = "FIVE";
+	  t3b2_1_5.add(temp);
+	  
+	  temp = new GridCell(0, 3, 2);
+	  temp.setT13(true);
+	  temp.setT34(true);
+	  temp.setT24(true);
+	  temp.setT56(true);
+	  temp.location = "TWO";
+	  temp.location2 = "SIX";
+	  t3b2_1_5.add(temp);
+	  
+	  //add array to hashtable
+	  
+	  // Not complete... Need to add more configurations that have 3 locations
+	  
+	  /* top3_bot3.jpg */
+	  temp = new GridCell(0, 3, 3);
+	  temp.setT12(true);
+	  temp.setT13(true);
+	  temp.setT34(true);
+	  temp.setT46(true);
+	  temp.setT56(true);
+	  temp.location = "TWO";
+	  table.put("3_3_FIVE", temp);
+	  
+	  temp = new GridCell(0, 3, 3);
+	  temp.setT12(true);
+	  temp.setT24(true);
+	  temp.setT34(true);
+	  temp.setT35(true);
+	  temp.setT56(true);
+	  temp.location = "SIX";
+	  table.put("3_3_ONE", temp);
    }
 
 }
