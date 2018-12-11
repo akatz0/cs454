@@ -249,14 +249,16 @@ public class Grid {
       //add array to hashtable
 	  
 	  
-	  /* top3_bot1.jpg */
+	  /* top3_bot1_through_top3_bot3.jpg */
+	  // Configuration index 1 in top3_bot1_through_top3_bot3.jpg
 	  temp = new GridCell(0, 3, 1);
-      temp.setT13(true);
+	  temp.setT13(true);
 	  temp.setT34(true);
 	  temp.setT24(true);
-      temp.location = "TWO"; //setting the final location
-      table.put("3_1_ONE", temp); // only valid solution with these values and location
+	  temp.location = "TWO"; //setting the final location
+	  table.put("3_1_ONE", temp); // only valid solution with these values and location
 
+	  // 2
 	  temp = new GridCell(0, 3, 1);
 	  temp.setT12(true);
 	  temp.setT24(true);
@@ -265,6 +267,7 @@ public class Grid {
 	  temp.location2 = "THREE";
 	  table.put("3_1_ONE_THREE", temp);
 	  
+	  // 3
 	  temp = new GridCell(0, 3, 1);
 	  temp.setT12(true);
 	  temp.setT13(true);
@@ -273,6 +276,7 @@ public class Grid {
 	  temp.location = "FOUR";
 	  table.put("3_1_FIVE", temp);
 	  
+	  // 4
 	  temp = new GridCell(0, 3, 1);
 	  temp.setT12(true);
 	  temp.setT13(true);
@@ -282,6 +286,7 @@ public class Grid {
 	  temp.location2 = "SIX";
 	  table.put("3_1_THREE_FIVE", temp);
 	  
+	  // 5
 	  temp = new GridCell(0, 3, 1);
 	  temp.setT12(true);
 	  temp.setT13(true);
@@ -290,16 +295,17 @@ public class Grid {
 	  temp.location = "SIX";
 	  table.put("3_1_THREE", temp);
 	  
-	  /* Not sure how to enter this one
+	  // 6 (Not sure if correct)
 	  temp = new GridCell(0, 3, 1);
 	  temp.setT12(true);
 	  temp.setT13(true);
 	  temp.setT34(true);
 	  temp.location = "TWO";
 	  temp.location2 = "FOUR";
-	  table.put("3_1_TWO_FOUR", temp); */
+	  table.put("3_1_TWO_FOUR", temp);
 
-	  /* top3_bot2.jpg */
+	  // top3_bot2
+	  // 7
 	  temp = new GridCell(0, 3, 2);
 	  temp.setT12(true);
 	  temp.setT13(true);
@@ -311,6 +317,7 @@ public class Grid {
 	  table.put("3_2_THREE_FIVE", temp);
 	  
 	  ArrayList<GridCell> t3b2_1_5 = new ArrayList<GridCell>(); //TODO add to hash table, key "3_2_ONE_FIVE"
+	  // 8
 	  temp = new GridCell(0, 3, 2);
 	  temp.setT12(true);
 	  temp.setT24(true);
@@ -320,6 +327,7 @@ public class Grid {
 	  temp.location2 = "FIVE";
 	  t3b2_1_5.add(temp);
 	  
+	  // 9
 	  temp = new GridCell(0, 3, 2);
 	  temp.setT13(true);
 	  temp.setT34(true);
@@ -331,9 +339,31 @@ public class Grid {
 	  
 	  //add array to hashtable
 	  
-	  // Not complete... Need to add more configurations that have 3 locations
+	  // 10 
+	  temp = new GridCell(0, 3, 2);
+	  temp.setT12(true);
+	  temp.setT13(true);
+	  temp.setT34(true);
+	  temp.setT46(true);
+	  temp.location = "TWO";
+	  temp.location2 = "SIX";
+	  table.put("3_2_TWO_SIX", temp);
 	  
-	  /* top3_bot3.jpg */
+	  // 11
+	  temp = new GridCell(0, 3, 2);
+	  temp.setT12(true);
+	  temp.setT13(true);
+	  temp.setT24(true);
+	  temp.setT35(true);
+	  temp.setT56(true);
+	  temp.location = "FOUR";
+	  temp.location2 = "SIX";
+	  table.put("3_2_FOUR_SIX", temp);
+	  
+	  // TODO: 12 and 13
+	  
+	  // top3_bot3
+	  // 14
 	  temp = new GridCell(0, 3, 3);
 	  temp.setT12(true);
 	  temp.setT13(true);
@@ -343,6 +373,7 @@ public class Grid {
 	  temp.location = "TWO";
 	  table.put("3_3_FIVE", temp);
 	  
+	  // 15
 	  temp = new GridCell(0, 3, 3);
 	  temp.setT12(true);
 	  temp.setT24(true);
@@ -351,6 +382,8 @@ public class Grid {
 	  temp.setT56(true);
 	  temp.location = "SIX";
 	  table.put("3_3_ONE", temp);
+	  
+	  // TODO: -1's
    }
 
 }
