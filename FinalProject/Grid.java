@@ -28,6 +28,7 @@ public class Grid {
       solved = false;
       nextSnakeOption = new Stack<String>();
       nextSnakeOption.push("EMPTY"); // bottom of stack marker
+      populateTable();
   }
 
   public boolean solve(){
@@ -87,11 +88,8 @@ public class Grid {
     }
   }
 
-  public static void main(String[] args) {
-      Grid test = new Grid("[3,-1][-1, 2][-1, 3][1, 2][3,-1]");
-      test.print();
+  public void populateTable(){
 
-      //   Manually inputting some cells for the solution table (one location only)
       GridCell temp = new GridCell(0, 0, 0); // any cell with 0 and 0 as values will result in a failed grid
       temp.location = "FALSE";
       table.put("0_0_ONE", temp);
@@ -418,143 +416,141 @@ public class Grid {
       t3bneg1_loc5.add(temp29);
       // add list to table
       
-	  /* top3_bot1_through_top3_bot3.jpg */
-	  // Configuration index 1 in top3_bot1_through_top3_bot3.jpg
-	  temp = new GridCell(0, 3, 1);
-	  temp.setT13(true);
-	  temp.setT34(true);
-	  temp.setT24(true);
-	  temp.location = "TWO"; //setting the final location
-	  table.put("3_1_ONE", temp); // only valid solution with these values and location
+    /* top3_bot1_through_top3_bot3.jpg */
+    // Configuration index 1 in top3_bot1_through_top3_bot3.jpg
+    temp = new GridCell(0, 3, 1);
+    temp.setT13(true);
+    temp.setT34(true);
+    temp.setT24(true);
+    temp.location = "TWO"; //setting the final location
+    table.put("3_1_ONE", temp); // only valid solution with these values and location
 
-	  // 2
-	  temp = new GridCell(0, 3, 1);
-	  temp.setT12(true);
-	  temp.setT24(true);
-	  temp.setT34(true);
-	  temp.location = "ONE";
-	  temp.location2 = "THREE";
-	  table.put("3_1_ONE_THREE", temp);
-	  
-	  // 3
-	  temp = new GridCell(0, 3, 1);
-	  temp.setT12(true);
-	  temp.setT13(true);
-	  temp.setT24(true);
-	  temp.setT35(true);
-	  temp.location = "FOUR";
-	  table.put("3_1_FIVE", temp);
-	  
-	  // 4
-	  temp = new GridCell(0, 3, 1);
-	  temp.setT12(true);
-	  temp.setT13(true);
-	  temp.setT24(true);
-	  temp.setT56(true);
-	  temp.location = "FOUR";
-	  temp.location2 = "SIX";
-	  table.put("3_1_THREE_FIVE", temp);
-	  
-	  // 5
-	  temp = new GridCell(0, 3, 1);
-	  temp.setT12(true);
-	  temp.setT13(true);
-	  temp.setT24(true);
-	  temp.setT46(true);
-	  temp.location = "SIX";
-	  table.put("3_1_THREE", temp);
-	  
-	  // 6 (Not sure if correct)
-	  temp = new GridCell(0, 3, 1);
-	  temp.setT12(true);
-	  temp.setT13(true);
-	  temp.setT34(true);
-	  temp.location = "TWO";
-	  temp.location2 = "FOUR";
-	  table.put("3_1_TWO_FOUR", temp);
+    // 2
+    temp = new GridCell(0, 3, 1);
+    temp.setT12(true);
+    temp.setT24(true);
+    temp.setT34(true);
+    temp.location = "ONE";
+    temp.location2 = "THREE";
+    table.put("3_1_ONE_THREE", temp);
+    
+    // 3
+    temp = new GridCell(0, 3, 1);
+    temp.setT12(true);
+    temp.setT13(true);
+    temp.setT24(true);
+    temp.setT35(true);
+    temp.location = "FOUR";
+    table.put("3_1_FIVE", temp);
+    
+    // 4
+    temp = new GridCell(0, 3, 1);
+    temp.setT12(true);
+    temp.setT13(true);
+    temp.setT24(true);
+    temp.setT56(true);
+    temp.location = "FOUR";
+    temp.location2 = "SIX";
+    table.put("3_1_THREE_FIVE", temp);
+    
+    // 5
+    temp = new GridCell(0, 3, 1);
+    temp.setT12(true);
+    temp.setT13(true);
+    temp.setT24(true);
+    temp.setT46(true);
+    temp.location = "SIX";
+    table.put("3_1_THREE", temp);
+    
+    // 6 (Not sure if correct)
+    temp = new GridCell(0, 3, 1);
+    temp.setT12(true);
+    temp.setT13(true);
+    temp.setT34(true);
+    temp.location = "TWO";
+    temp.location2 = "FOUR";
+    table.put("3_1_TWO_FOUR", temp);
 
-	  // top3_bot2
-	  // 7
-	  temp = new GridCell(0, 3, 2);
-	  temp.setT12(true);
-	  temp.setT13(true);
-	  temp.setT24(true);
-	  temp.setT46(true);
-	  temp.setT56(true);
-	  temp.location = "THREE";
-	  temp.location2 = "FIVE";
-	  table.put("3_2_THREE_FIVE", temp);
-	  
-	  ArrayList<GridCell> t3b2_1_5 = new ArrayList<GridCell>(); //TODO add to hash table, key "3_2_ONE_FIVE"
-	  // 8
-	  temp = new GridCell(0, 3, 2);
-	  temp.setT12(true);
-	  temp.setT24(true);
-	  temp.setT34(true);
-	  temp.setT35(true);
-	  temp.location = "ONE";
-	  temp.location2 = "FIVE";
-	  t3b2_1_5.add(temp);
-	  
-	  // 9
-	  temp = new GridCell(0, 3, 2);
-	  temp.setT13(true);
-	  temp.setT34(true);
-	  temp.setT24(true);
-	  temp.setT56(true);
-	  temp.location = "TWO";
-	  temp.location2 = "SIX";
-	  t3b2_1_5.add(temp);
-	  
-	  //add array to hashtable
-	  
-	  // 10 
-	  temp = new GridCell(0, 3, 2);
-	  temp.setT12(true);
-	  temp.setT13(true);
-	  temp.setT34(true);
-	  temp.setT46(true);
-	  temp.location = "TWO";
-	  temp.location2 = "SIX";
-	  table.put("3_2_TWO_SIX", temp);
-	  
-	  // 11
-	  temp = new GridCell(0, 3, 2);
-	  temp.setT12(true);
-	  temp.setT13(true);
-	  temp.setT24(true);
-	  temp.setT35(true);
-	  temp.setT56(true);
-	  temp.location = "FOUR";
-	  temp.location2 = "SIX";
-	  table.put("3_2_FOUR_SIX", temp);
-	  
-	  // TODO: 12 and 13
-	  
-	  // top3_bot3
-	  // 14
-	  temp = new GridCell(0, 3, 3);
-	  temp.setT12(true);
-	  temp.setT13(true);
-	  temp.setT34(true);
-	  temp.setT46(true);
-	  temp.setT56(true);
-	  temp.location = "TWO";
-	  table.put("3_3_FIVE", temp);
-	  
-	  // 15
-	  temp = new GridCell(0, 3, 3);
-	  temp.setT12(true);
-	  temp.setT24(true);
-	  temp.setT34(true);
-	  temp.setT35(true);
-	  temp.setT56(true);
-	  temp.location = "SIX";
-	  table.put("3_3_ONE", temp);
-	  
-	  // TODO: -1's
-
-
+    // top3_bot2
+    // 7
+    temp = new GridCell(0, 3, 2);
+    temp.setT12(true);
+    temp.setT13(true);
+    temp.setT24(true);
+    temp.setT46(true);
+    temp.setT56(true);
+    temp.location = "THREE";
+    temp.location2 = "FIVE";
+    table.put("3_2_THREE_FIVE", temp);
+    
+    ArrayList<GridCell> t3b2_1_5 = new ArrayList<GridCell>(); //TODO add to hash table, key "3_2_ONE_FIVE"
+    // 8
+    temp = new GridCell(0, 3, 2);
+    temp.setT12(true);
+    temp.setT24(true);
+    temp.setT34(true);
+    temp.setT35(true);
+    temp.location = "ONE";
+    temp.location2 = "FIVE";
+    t3b2_1_5.add(temp);
+    
+    // 9
+    temp = new GridCell(0, 3, 2);
+    temp.setT13(true);
+    temp.setT34(true);
+    temp.setT24(true);
+    temp.setT56(true);
+    temp.location = "TWO";
+    temp.location2 = "SIX";
+    t3b2_1_5.add(temp);
+    
+    //add array to hashtable
+    
+    // 10 
+    temp = new GridCell(0, 3, 2);
+    temp.setT12(true);
+    temp.setT13(true);
+    temp.setT34(true);
+    temp.setT46(true);
+    temp.location = "TWO";
+    temp.location2 = "SIX";
+    table.put("3_2_TWO_SIX", temp);
+    
+    // 11
+    temp = new GridCell(0, 3, 2);
+    temp.setT12(true);
+    temp.setT13(true);
+    temp.setT24(true);
+    temp.setT35(true);
+    temp.setT56(true);
+    temp.location = "FOUR";
+    temp.location2 = "SIX";
+    table.put("3_2_FOUR_SIX", temp);
+    
+    // TODO: 12 and 13
+    
+    // top3_bot3
+    // 14
+    temp = new GridCell(0, 3, 3);
+    temp.setT12(true);
+    temp.setT13(true);
+    temp.setT34(true);
+    temp.setT46(true);
+    temp.setT56(true);
+    temp.location = "TWO";
+    table.put("3_3_FIVE", temp);
+    
+    // 15
+    temp = new GridCell(0, 3, 3);
+    temp.setT12(true);
+    temp.setT24(true);
+    temp.setT34(true);
+    temp.setT35(true);
+    temp.setT56(true);
+    temp.location = "SIX";
+    table.put("3_3_ONE", temp);
+    
+    // TODO: -1's
 
       /*  For numbering diagram see TOBneg1_through_T1B2.pdf */
       // Top 0  Bottom -1
@@ -918,6 +914,11 @@ public class Grid {
       temp128.location = "SIX";
       t1b2_loc3.add(temp129);
 
+  }
+
+  public static void main(String[] args) {
+      Grid test = new Grid("[3,-1][-1, 2][-1, 3][1, 2][3,-1]");
+      test.print();
 
    }
 
