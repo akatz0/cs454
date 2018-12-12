@@ -559,6 +559,7 @@ public class Grid {
       /*  For numbering diagram see TOBneg1_through_T1B2.pdf */
       // Top 0  Bottom -1
       //0neg11
+      /*ArrayList<GridCell> t0bneg1_loc3 = new ArrayList<GridCell>(); //TODO add to hash table, key "0_neg1_THREE"
       temp0neg11 = new GridCell(0, 0, -1);
       temp0neg11.setT35(true);
       temp0neg11.setT56(true);
@@ -567,6 +568,7 @@ public class Grid {
       t0bneg1_loc3.add(temp0neg11);
 
       //0neg12
+      ArrayList<GridCell> t0bneg1_loc5 = new ArrayList<GridCell>(); //TODO add to hash table, key "0_neg1_FIVE"
       temp0neg12 = new GridCell(0, 0, -1);
       temp0neg12.setT35(true);
       temp0neg12.setT56(true);
@@ -608,13 +610,13 @@ public class Grid {
 
       //012
       temp012 = new GridCell(0, 0, 1);
-      temp011.setT56(true);
-      table02.set35(true);
-      temp011.location2 = "SIX";
-      table.put("0_1_SIX", temp011);
+      temp012.setT56(true);
+      table012.setT35(true);
+      temp012.location2 = "SIX";
+      table.put("0_1_SIX", temp012);
 
       //Top 0  Bottom 2
-      //021
+      //021*/
    }
 
 }
