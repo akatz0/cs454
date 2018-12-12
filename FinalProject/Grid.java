@@ -631,7 +631,7 @@ public class Grid {
       temp1neg11.setT35(true);
       temp1neg11.setT34(true);
       temp1neg11.location = "FIVE";
-      t1_bneg1_1.add(temp1neg11);
+      t1bneg1_loc1.add(temp1neg11);
 
       //1neg12
       GridCell temp1neg12 = new GridCell(0, 0, -1);
@@ -639,7 +639,7 @@ public class Grid {
       temp1neg12.setT34(true);
       temp1neg12.setT46(true);
       temp1neg12.location = "SIX";
-      t1_bneg1_5.add(temp1neg12);
+      t1bneg1_loc5.add(temp1neg12);
 
       /*//1neg13  == INVALID CELL
       GridCell temp1neg13 = new GridCell(0, 0, -1);
@@ -656,15 +656,15 @@ public class Grid {
       temp1neg14.setT56(true);
       temp1neg14.location = "SIX";
       temp1neg14.location = "FOUR";
-      t1_bneg1_5.add(temp1neg14);
-      t1_bneg1_3.add(temp1neg14);
+      t1bneg1_loc5.add(temp1neg14);
+      t1bneg1_loc3.add(temp1neg14);
 
       //1neg15
       GridCell temp1neg15 = new GridCell(0, 0, -1);
       temp1neg15.setT34(true);
       temp1neg15.setT46(true);
       temp1neg15.location = "SIX";
-      t1_bneg1_3.add(temp1neg15);
+      t1bneg1_loc3.add(temp1neg15);
 
       //1neg16  === ONLY VALID FOR LAST CELL
       GridCell temp1neg16 = new GridCell(0, 0, -1);
@@ -673,8 +673,8 @@ public class Grid {
       temp1neg16.setT46(true);
       temp1neg16.location = "FIVE";
       temp1neg16.location = "THREE";
-      t1_bneg1_3.add(temp1neg16);
-      t1_bneg1_5.add(temp1neg16);
+      t1bneg1_loc3.add(temp1neg16);
+      t1bneg1_loc5.add(temp1neg16);
 
 
       //1neg17 ===== ONLY VALID FOR LAST CELL
@@ -685,8 +685,8 @@ public class Grid {
       temp1neg17.setT46(true);
       temp1neg17.location = "FIVE";
       temp1neg17.location = "THREE";
-      t1_bneg1_5.add(temp1neg17);
-      t1_bneg1_3.add(temp1neg17);
+      t1bneg1_loc5.add(temp1neg17);
+      t1bneg1_loc3.add(temp1neg17);
 
       //1neg18 === ONLY VALID FOR LAST CELL
       GridCell temp1neg18 = new GridCell(0, 0, -1);
@@ -694,8 +694,8 @@ public class Grid {
       temp1neg18.setT13(true);
       temp1neg18.location = "FIVE";
       temp1neg18.location = "ONE";
-      t1_bneg1_5.add(temp1neg18);
-      t1_bneg1_1.add(temp1neg18);
+      t1bneg1_loc5.add(temp1neg18);
+      t1bneg1_loc1.add(temp1neg18);
 
       //1neg19
       GridCell temp1neg19 = new GridCell(0, 0, -1);
@@ -703,13 +703,13 @@ public class Grid {
       temp1neg19.setT35(true);
       temp1neg19.setT13(true);
       temp1neg19.location = "SIX";
-      t1_bneg1_1.add(temp1neg19);
+      t1bneg1_loc1.add(temp1neg19);
 
       //1neg110
       GridCell temp1neg110 = new GridCell(0, 0, -1);
       temp1neg110.setT12(true);
       temp1neg110.location = "TWO";
-      t1_bneg1_1.add(temp1neg110);
+      t1bneg1_loc1.add(temp1neg110);
 
       //1neg111
       GridCell temp1neg111 = new GridCell(0, 0, -1);
@@ -717,29 +717,27 @@ public class Grid {
       temp1neg111.setT12(true);
       temp1neg111.location = "TWO";
       temp1neg111.location = "SIX";
-      t1_bneg1_5.add(temp1neg111);
-      t1_bneg1_1.add(temp1neg111);
+      t1bneg1_loc5.add(temp1neg111);
+      t1bneg1_loc1.add(temp1neg111);
 
       //1neg112
       GridCell temp1neg112 = new GridCell(0, 0, -1);
       temp1neg112.setT56(true);
-      temp1neg112.setT45(true);
+      temp1neg112.setT34(true);
       temp1neg112.setT12(true);
       temp1neg112.location = "TWO";
       temp1neg112.location = "FOUR";
-      t1_bneg1_5.add(temp1neg112);
-      t1_bneg1_1.add(temp1neg112);
+      t1bneg1_loc5.add(temp1neg112);
+      t1bneg1_loc1.add(temp1neg112);
 
       //1neg113
       GridCell temp1neg113 = new GridCell(0, 0, -1);
-      temp1neg113.setT56(true);
-      temp1neg113.setT45(true);
-      temp1neg113.setT12(true);
+      temp1neg113.setT13(true);
       temp1neg113.setT35(true);
       temp1neg113.location = "TWO";
       temp1neg113.location = "FOUR";
-      t1_bneg1_3.add(temp1neg113);
-      t1_bneg1_1.add(temp1neg113);
+      t1bneg1_loc3.add(temp1neg113);
+      t1bneg1_loc1.add(temp1neg113);
 
       //1neg114
       GridCell temp1neg114 = new GridCell(0, 0, -1);
@@ -747,7 +745,7 @@ public class Grid {
       temp1neg114.setT24(true);
       temp1neg114.location = "TWO";
       temp1neg114.location = "FOUR";
-      t1_bneg1_5.add(temp1neg114);
+      t1bneg1_loc5.add(temp1neg114);
 
       //1neg115
       GridCell temp1neg115 = new GridCell(0, 0, -1);
@@ -757,7 +755,7 @@ public class Grid {
       temp1neg114.location = "TWO";
       temp1neg114.location = "FOUR";
       temp1neg114.location = "SIX";
-      t1_bneg1_3.add(temp1neg114);
+      t1bneg1_loc3.add(temp1neg114);
 
       //1neg116
       GridCell temp1neg116 = new GridCell(0, 0, -1);
@@ -766,7 +764,7 @@ public class Grid {
       temp1neg116.setT35(true);
       temp1neg116.setT46(true);
       temp1neg116.location = "TWO";
-      t1_bneg1_3.add(temp1neg116);
+      t1bneg1_loc3.add(temp1neg116);
 
       //1neg117
       GridCell temp1neg117 = new GridCell(0, 0, -1);
@@ -774,41 +772,41 @@ public class Grid {
       temp1neg117.setT24(true);
       temp1neg117.setT46(true);
       temp1neg117.location = "TWO";
-      t1_bneg1_5.add(temp1neg117);
+      t1bneg1_loc5.add(temp1neg117);
 
       // Top 1  Bottom 0
       //101  =====  VALID FOR LAST CELL ONLY
-      GridCell temp101 = new GridCell(0, 0, 2);
+      GridCell temp101 = new GridCell(0, 1, 0);
       temp101.setT13(true);
-      temp101.location = "TWO";
-      temp101.location = "FOUR";
-      table.temp101("0_3_TWO", temp101);
-      table.temp101("0_3_FOUR", temp101);
+      temp101.location = "THREE";
+      temp101.location = "ONE";
+      //table.temp101("1_0_ONE", temp101);
+      //table.temp101("1_0_THREE", temp101);
 
       //102
-      GridCell temp102 = new GridCell(0, 0, 2);
+      GridCell temp102 = new GridCell(0, 1, 0);
       temp101.setT12(true);
       temp101.location = "TWO";
-      table.temp101("0_3_ONE", temp101);
+      //table.temp101("1_0_ONE", temp101);
 
       // Top 1  Bottom 1
       //111
       ArrayList<GridCell> t1b1_loc1 = new ArrayList<GridCell>(); //TODO add to hash table, key "1_neg1_ONE"
       ArrayList<GridCell> t1b1_loc3 = new ArrayList<GridCell>(); //TODO add to hash table, key "1_neg1_THREE"
       ArrayList<GridCell> t1b1_loc5 = new ArrayList<GridCell>(); //TODO add to hash table, key "1_neg1_FIVE"
-      GridCell temp111 = new GridCell(0, 0, 1);
+      GridCell temp111 = new GridCell(0, 1, 1);
       temp111.setT34(true);
       temp111.location = "FOUR";
       t1b1_loc3.add(temp111);
 
       //112
-      GridCell temp112 = new GridCell(0, 0, 1);
+      GridCell temp112 = new GridCell(0, 1, 1);
       temp112.setT12(true);
       temp112.location = "TWO";
       t1b1_loc1.add(temp112);
 
       //113
-      GridCell temp113 = new GridCell(0, 0, 1);
+      GridCell temp113 = new GridCell(0, 1, 1);
       temp113.setT13(true);
       temp113.setT35(true);
       temp113.location = "ONE";
@@ -817,7 +815,7 @@ public class Grid {
       t1b1_loc1.add(temp113);
 
       //114
-      GridCell temp114 = new GridCell(0, 0, 1);
+      GridCell temp114 = new GridCell(0, 1, 1);
       temp113.setT56(true);
       temp113.setT24(true);
       temp113.location = "TWO";
@@ -826,14 +824,100 @@ public class Grid {
       t1b1_loc5.add(temp113);
 
       //115
-      GridCell temp115 = new GridCell(0, 0, 1);
+      GridCell temp115 = new GridCell(0, 1, 1);
       temp115.setT12(true);
       temp113.location = "TWO";
       t1b1_loc1.add(temp113);
 
       //Top 1  Bottom 2
       //121
-      
+      ArrayList<GridCell> t1b2_loc1 = new ArrayList<GridCell>(); //TODO add to hash table, key "1_2_ONE"
+      ArrayList<GridCell> t1b2_loc3 = new ArrayList<GridCell>(); //TODO add to hash table, key "1_2_THREE"
+      ArrayList<GridCell> t1b2_loc5 = new ArrayList<GridCell>(); //TODO add to hash table, key "1_2_FIVE"
+
+      GridCell temp121 = new GridCell(0, 1, 2);
+      temp121.setT13(true);
+      temp121.setT35(true);
+      temp121.setT56(true);
+      temp121.location = "SIX";
+      t1b1_loc1.add(temp121);
+
+      //122 turned out to be invalid
+
+      //123
+      GridCell temp123 = new GridCell(0, 1, 2);
+      temp123.setT12(true);
+      temp123.setT35(true);
+      temp123.setT56(true);
+      temp123.location = "SIX";
+      temp123.location = "TWO";
+      t1b2_loc1.add(temp123);
+      t1b2_loc3.add(temp123);
+
+      //124
+      GridCell temp124 = new GridCell(0, 1, 2);
+      temp124.setT12(true);
+      temp124.setT46(true);
+      temp124.setT56(true);
+      temp124.location = "FOUR";
+      temp124.location = "TWO";
+      t1b2_loc1.add(temp124);
+      t1b2_loc5.add(temp124);
+
+      //125
+      GridCell temp125 = new GridCell(0, 1, 2);
+      temp125.setT34(true);
+      temp125.setT35(true);
+      temp125.location = "FOUR";
+      t1b2_loc5.add(temp125);
+
+      //126
+      GridCell temp126 = new GridCell(0, 1, 2);
+      temp126.setT34(true);
+      temp126.setT46(true);
+      temp126.location = "SIX";
+      t1b2_loc3.add(temp126);
+
+      //127
+      GridCell temp127 = new GridCell(0, 1, 2);
+      temp127.setT35(true);
+      temp127.setT46(true);
+      temp127.setT12(true);
+      temp127.location = "TWO";
+      temp127.location = "FOUR";
+      temp127.location = "SIX";
+      t1b2_loc1.add(temp127);
+      t1b2_loc3.add(temp127);
+      t1b2_loc5.add(temp127);
+
+      //128
+      GridCell temp128 = new GridCell(0, 1, 2);
+      temp128.setT34(true);
+      temp128.setT46(true);
+      temp128.location = "FOUR";
+      temp128.location = "SIX";
+      t1b2_loc3.add(temp128);
+      t1b2_loc5.add(temp128);
+
+      //129
+      GridCell temp129 = new GridCell(0, 1, 2);
+      temp129.setT24(true);
+      temp129.setT46(true);
+      temp129.setT56(true);
+      temp129.location = "TWO";
+      t1b2_loc5.add(temp129);
+
+      //1210
+      //129
+      GridCell temp130 = new GridCell(0, 1, 2);
+      temp129.setT24(true);
+      temp129.setT35(true);
+      temp129.setT56(true);
+      temp129.location = "TWO";
+      temp128.location = "FOUR";
+      temp128.location = "SIX";
+      t1b2_loc3.add(temp129);
+
 
    }
 
