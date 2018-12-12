@@ -171,6 +171,7 @@ public class GridCell {
         }
       } else if ( o instanceof GridCell){
         c = (GridCell)o;
+        if (c.location == "FALSE") return false;
       }
 
       if (!checkOverlap(c)) return false; // the overlap does not match the configuration retrieved from table

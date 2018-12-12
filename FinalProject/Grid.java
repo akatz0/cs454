@@ -167,7 +167,7 @@ public class Grid {
       temp14.location = "SIX"; 
       t2bneg1.add(temp14);
 
-      /// add list to hash table here
+      table.put("2_-1_ONE", t2bneg1);
 
       ArrayList<GridCell> t2bneg1_loc3 = new ArrayList<GridCell>(); //TODO add to hash table, key "2_-1_THREE"
       GridCell temp8 = new GridCell(0, 2, -1);
@@ -182,7 +182,8 @@ public class Grid {
       temp12.location = "TWO"; 
       t2bneg1_loc3.add(temp12);
 
-      /// add array to hash table
+      table.put("2_-1_THREE", t2bneg1_loc3);
+
       ArrayList<GridCell> t2bneg1_loc5 = new ArrayList<GridCell>(); //TODO add to hash table, key "2_-1_FIVE"
       GridCell temp7 = new GridCell(0, 2, -1);
       temp7.setT35(true);
@@ -197,7 +198,7 @@ public class Grid {
       temp10.setT24(true);
       temp7.location = "TWO";
       t2bneg1_loc5.add(temp10);
-      //add array to hash table
+      table.put("2_-1_FIVE", t2bneg1_loc5);
 
       ArrayList<GridCell> t2bneg1_1_3 = new ArrayList<GridCell>(); //TODO add to hash table, key "2_-1_ONE_THREE"
       GridCell temp5 = new GridCell(0, 2, -1);
@@ -216,7 +217,7 @@ public class Grid {
       temp11.location2 = "SIX";
       t2bneg1_1_3.add(temp11);
 
-      //add array to hashtable
+      table.put("2_-1_ONE_THREE", t2bneg1_1_3);
 
       ArrayList<GridCell> t2bneg1_3_5 = new ArrayList<GridCell>(); //TODO add to hash table, key "2_-1_THREE_FIVE"
       GridCell temp9 = new GridCell(0, 2, -1);
@@ -236,6 +237,8 @@ public class Grid {
       temp13.location2 = "SIX";
       t2bneg1_3_5.add(temp13);
 
+      table.put("2_-1_THREE_FIVE", t2bneg1_3_5);
+
       ArrayList<GridCell> t2bneg1_1_5 = new ArrayList<GridCell>(); //TODO add to hash table, key "2_-1_ONE_FIVE"
       GridCell temp6 = new GridCell(0, 2, -1);
       temp6.setT12(true);
@@ -253,7 +256,7 @@ public class Grid {
       temp.location = "ONE";
       temp.location2 = "FIVE";
       t2bneg1_1_5.add(temp);
-      //add array to hashtable
+      table.put( "2_-1_ONE_FIVE", t2bneg1_1_5);
 
       //top value 2, bottom value 0
       temp = new GridCell(0, 2, 0);
@@ -290,7 +293,7 @@ public class Grid {
       temp4.location = "SIX"; 
       t2b1.add(temp4);
 
-      /// add list to hash table here
+      table.put( "2_1_ONE", t2b1);
 
       ArrayList<GridCell> t2b1_loc3 = new ArrayList<GridCell>(); //TODO add to hash table, key "2_1_THREE"
       temp8 = new GridCell(0, 2, 1);
@@ -305,7 +308,7 @@ public class Grid {
       temp12.setT34(true);
       temp12.location = "TWO"; 
       t2b1_loc3.add(temp12);
-      // add list to hash table
+      table.put( "2_1_THREE", t2b1_loc3);
 
       temp10 = new GridCell(0, 2, 1);
       temp10.setT35(true);
@@ -396,7 +399,7 @@ public class Grid {
       temp25.setT24(true);
       temp25.location = "FOUR";
       t3bneg1_loc3.add(temp25);
-      //add list to table
+      table.put("3_-1_THREE", t3bneg1_loc3);
 
       ArrayList<GridCell> t3bneg1_loc5 = new ArrayList<GridCell>(); //TODO add to hash table, key "3_-1_FIVE"
       GridCell temp26 = new GridCell(0, 3, -1);
@@ -415,7 +418,7 @@ public class Grid {
       temp29.setT46(true);
       temp29.location = "SIX"; 
       t3bneg1_loc5.add(temp29);
-      // add list to table
+      table.put("3_-1_FIVE", t3bneg1_loc5);
       
     /* top3_bot1_through_top3_bot3.jpg */
     // Configuration index 1 in top3_bot1_through_top3_bot3.jpg
@@ -505,7 +508,7 @@ public class Grid {
     temp.location2 = "SIX";
     t3b2_1_5.add(temp);
     
-    //add array to hashtable
+    table.put("3_2_ONE_FIVE", t3b2_1_5);
     
     // 10 
     temp = new GridCell(0, 3, 2);
