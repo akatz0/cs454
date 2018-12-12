@@ -91,7 +91,7 @@ public class Grid {
       Grid test = new Grid("[3,-1][-1, 2][-1, 3][1, 2][3,-1]");
       test.print();
 
-      //Manually inputting some cells for the solution table (one location only)
+      //   Manually inputting some cells for the solution table (one location only)
       GridCell temp = new GridCell(0, 0, 0); // any cell with 0 and 0 as values will result in a failed grid
       temp.location = "FALSE";
       table.put("0_0_ONE", temp);
@@ -553,6 +553,68 @@ public class Grid {
 	  table.put("3_3_ONE", temp);
 	  
 	  // TODO: -1's
+
+
+
+      /*  For numbering diagram see TOBneg1_through_T1B2.pdf */
+      // Top 0  Bottom -1
+      //0neg11
+      temp0neg11 = new GridCell(0, 0, -1);
+      temp0neg11.setT35(true);
+      temp0neg11.setT56(true);
+      temp0neg11.setT46(true);
+      temp0neg11.location = "FOUR";
+      t0bneg1_loc3.add(temp0neg11);
+
+      //0neg12
+      temp0neg12 = new GridCell(0, 0, -1);
+      temp0neg12.setT35(true);
+      temp0neg12.setT56(true);
+      temp0neg12.location = "SIX";
+      t0bneg1_loc5.add(temp0neg12);
+
+      //0neg13
+      temp0neg13 = new GridCell(0, 0, -1);
+      temp0neg13.setT46(true);
+      temp0neg13.setT56(true);
+      temp0neg13.location = "FOUR";
+      t0bneg1_loc3.add(temp0neg13);
+
+      //0neg14
+      temp0neg14 = new GridCell(0, 0, -1);
+      temp0neg14.setT56(true);
+      temp0neg14.location = "SIX";
+      t0bneg1_loc5.add(temp0neg14);
+
+      // Top 0  Bottom 0 has no solution
+
+      // Top 0  Bottom 3
+      //031
+      temp031 = new GridCell(0, 0, 3);
+      temp031.setT35(true);
+      temp031.setT56(true);
+      temp031.setT46(true);
+      temp031.location = "FOUR";
+      table.put("0_3_THREE", temp031);
+
+      //Top 0  Bottom 1
+      //011 --- Only valid if last cell on board
+      temp011 = new GridCell(0, 0, 1);
+      temp011.setT35(true);
+      temp011.location = "THREE";
+      temp011.location2 = "FIVE";
+      table.put("0_1_THREE", temp011);
+      table.put("0_1_FIVE", temp011);
+
+      //012
+      temp012 = new GridCell(0, 0, 1);
+      temp011.setT56(true);
+      table02.set35(true);
+      temp011.location2 = "SIX";
+      table.put("0_1_SIX", temp011);
+
+      //Top 0  Bottom 2
+      //021
    }
 
 }
