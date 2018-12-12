@@ -139,32 +139,44 @@ public class GridCell {
     //don't copy index value!!
   }
 
-  public String configureKey(){
-    return topValue + "_" + bottomValue + "_" + location + "_TODOlocation2" ;
+  private boolean checkOverlap(GridCell c){
+    if (c == null) return false;
+    if (getT13() != c.getT13()) return false;
+    if (getT35() != c.getT35()) return false;
+    return true;
   }
 
-  public boolean makeSnake(String one, String two){
-      GridCell c = Grid.table.get(configureKey()); //See if entry exists in table
+  public String configureKey(){
+    return topValue + "_" + bottomValue + "_" + location + "_" + location2 ;
+  }
 
-      // if entry exist in the table just re-use that solution
-      if ( c != null) { update(c); return true; }
-      if (c != null && c.location == "FALSE") return false; // already determined this configuration has no valid solution
-      // TODO will need to add capability to have multiple options for same key
-
-      // the cell values are empty
-      if( topValue < 0 && bottomValue < 0){
-        if (location =="ONE"){
-          setT12(true);
-          location = "TWO";
-          // here insert another option onto stack where we can branch to set T13 to true 
-          //or set T13, T35, and T56 to true, etc.
+  public boolean makeSnake(Grid gridBoard, String one, String two){
+      Object o = Grid.table.get(configureKey()); //See if entry exists in table
+      GridCell c = null;
+      ArrayList<GridCell> options;
+      if(o instanceof ArrayList){
+        options = (ArrayList<GridCell>) o;
+        for (GridCell g : options ) {
+          if (checkOverlap(g)){
+            c = g; // use the configuration that has matching overlap
+          } else {
+            g.index=index; // update index so we can tell what index we were going to try this for
+            gridBoard.pushSnakeStack(g); // push to stack
+          }
         }
-        return true;
+        if (c == null){
+          //we looped through all options and none matched
+          //so we can't proceed with what the path has been so far
+          return false;
+        }
+      } else if ( o instanceof GridCell){
+        c = (GridCell)o;
       }
 
-
-      if (topCompleted && bottomCompleted) return true;
-      return false;
+      if (!checkOverlap(c)) return false; // the overlap does not match the configuration retrieved from table
+      c.index = index;
+      update(c); // set the rest of the edges to match the configuration provided by table
+      return true;
   }
 
   public void print(){

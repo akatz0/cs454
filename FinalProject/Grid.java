@@ -10,8 +10,8 @@ Game grid contains a series of cells
 public class Grid {
 
   ArrayList<GridCell> gridList = new ArrayList<GridCell>();
-  static Hashtable<String, GridCell> table = new Hashtable<String, GridCell>();
-  Stack<String> nextSnakeOption;
+  static Hashtable<String, Object> table = new Hashtable<String, Object>();
+  Stack<GridCell> nextSnakeOption;
   boolean solved;
 
   public Grid(String s){
@@ -26,20 +26,21 @@ public class Grid {
           j += 3; //skip two values we've already processed and empty value
       }
       solved = false;
-      nextSnakeOption = new Stack<String>();
-      nextSnakeOption.push("EMPTY"); // bottom of stack marker
+      nextSnakeOption = new Stack<GridCell>();
       populateTable();
+  }
+
+  public void pushSnakeStack(GridCell c){
+    nextSnakeOption.push(c);
   }
 
   public boolean solve(){
     int currentIndex = 0;
     GridCell currentCell = gridList.get(0);
     //currentCell.setLocation = GridPoint.ONE; //Initialize snake to start in upper left corner of the grid
-    boolean result = currentCell.makeSnake("ONE", null);
+    boolean result = currentCell.makeSnake(this, "ONE", null);
     while (result){
-      /** TODO -- when moving to solve next cell we need to make sure we copy values of duplicate edges */
-      String temp = nextSnakeOption.pop();
-      if(temp == "EMPTY") return false; // if there are no more options to try then grid has no alternate solutions
+      if(nextSnakeOption.isEmpty()) return false; // if there are no more options to try then grid has no alternate solutions
       currentIndex++;
       if(currentIndex >= gridList.size()){
         result=false;break;// stop the infinite loop
@@ -47,7 +48,7 @@ public class Grid {
       GridCell prevCell = currentCell;
       currentCell = gridList.get(currentIndex);
       copyOverlap(prevCell, currentCell);
-      result = currentCell.makeSnake(currentCell.location, null);
+      result = currentCell.makeSnake(this, currentCell.location, currentCell.location2);
     }
     return false;
   }
