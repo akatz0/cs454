@@ -34,21 +34,53 @@ public class Grid {
     nextSnakeOption.push(c);
   }
 
+  // Replace a cell in the list
+  // Potentially dangerous method...
+  private void replaceCell(int index, GridCell cell){
+    cell.index = index;
+    gridList.remove(index);
+    gridList.add(index, cell);
+  }
+
   public boolean solve(){
+    int debugging_counter=0;
     int currentIndex = 0;
     GridCell currentCell = gridList.get(0);
     //currentCell.setLocation = GridPoint.ONE; //Initialize snake to start in upper left corner of the grid
-    boolean result = currentCell.makeSnake(this, "ONE", null);
+    boolean result = currentCell.makeSnake(this, "START", null);
     while (result){
-      if(nextSnakeOption.isEmpty()) return false; // if there are no more options to try then grid has no alternate solutions
+      // move to next cell
       currentIndex++;
-      if(currentIndex >= gridList.size()){
-        result=false;break;// stop the infinite loop
+      if(currentIndex >= gridList.size()){ // end of board was reached
+        //If you made it all the way through and still have result== true then there is a solution
+        return true;
       } 
+      if(currentIndex == gridList.size() -1){ // if its last cell in the board extra options are available
+        currentCell.location = "END";
+      }
+
       GridCell prevCell = currentCell;
       currentCell = gridList.get(currentIndex);
       copyOverlap(prevCell, currentCell);
       result = currentCell.makeSnake(this, currentCell.location, currentCell.location2);
+
+      //  no solution found for current cell lets backtrack...
+      while (!result && debugging_counter<100){ // while you haven't found a solution keep looping...
+        if(nextSnakeOption.isEmpty()) return false; // if there are no more options to try then grid has no alternate solutions
+        GridCell temp = nextSnakeOption.pop(); // get the next configuration to try
+        debugging_counter++;
+
+        replaceCell(currentIndex, temp);
+
+        prevCell = gridList.get(currentIndex);
+        currentIndex++; //try again from the one after the one you just changed
+        if( currentIndex < gridList.size()){
+          currentCell = gridList.get(currentIndex);
+          copyOverlap(prevCell, currentCell);
+          result = currentCell.makeSnake(this, currentCell.location, currentCell.location2);
+        } else { break; /*return false?? */ }
+      }
+
     }
     return false;
   }
@@ -78,15 +110,34 @@ public class Grid {
   public void copyOverlap(GridCell first, GridCell second){
     second.setT13(first.getT24());
     second.setT35(first.getT46());
+    if(second.index == gridList.size() -1){ // if its last cell in the board extra options are available
+        second.location = "END"; return;
+      }
     if(first.location == "TWO") second.location = "ONE";
     if(first.location == "FOUR") second.location = "THREE";
     if(first.location == "SIX") second.location = "FIVE";
+    if(first.location2 == "FOUR") second.location2 = "THREE";
+    if(first.location2 == "SIX") second.location2 = "FIVE";
   }
 
   public void print(){
     for ( GridCell g : gridList) {
       g.print();
     }
+  }
+
+  public ArrayList<GridCell> concatenate(ArrayList<GridCell> first, ArrayList<GridCell> second){
+    for (GridCell c : second) {
+      first.add(c);
+    }
+    return first;
+  }
+
+  //method to add all configurations to table with start and end
+  //pass top and bottom values as a string like "0_0" or "2_1"
+  private void populateEnds(String values, Object o){
+    table.put(values+"_START", o);
+    table.put(values+"_END", o);
   }
 
   public void populateTable(){
@@ -96,6 +147,7 @@ public class Grid {
       table.put("0_0_ONE", temp);
       table.put("0_0_THREE", temp);
       table.put("0_0_FIVE", temp);
+      populateEnds("0_0", temp);
       temp = new GridCell(0, 1, 1);
       temp.setT34(true);
       temp.location = "FOUR";
@@ -383,7 +435,9 @@ public class Grid {
       temp25.setT24(true);
       temp25.location = "FOUR";
       table.put("3_0_THREE", temp25);
+      populateEnds("3_0", temp25);
 
+      ArrayList<GridCell> all_t3bneg1 = new ArrayList<GridCell>();
       ArrayList<GridCell> t3bneg1_loc3 = new ArrayList<GridCell>(); //TODO add to hash table, key "3_-1_THREE"
       GridCell temp27 = new GridCell(0, 3, -1);
       temp27.setT13(true); 
@@ -400,6 +454,7 @@ public class Grid {
       temp25.location = "FOUR";
       t3bneg1_loc3.add(temp25);
       table.put("3_-1_THREE", t3bneg1_loc3);
+      concatenate(all_t3bneg1, t3bneg1_loc3);
 
       ArrayList<GridCell> t3bneg1_loc5 = new ArrayList<GridCell>(); //TODO add to hash table, key "3_-1_FIVE"
       GridCell temp26 = new GridCell(0, 3, -1);
@@ -419,7 +474,11 @@ public class Grid {
       temp29.location = "SIX"; 
       t3bneg1_loc5.add(temp29);
       table.put("3_-1_FIVE", t3bneg1_loc5);
+      concatenate(all_t3bneg1, t3bneg1_loc5);
+
+      populateEnds("3_-1", all_t3bneg1);
       
+      ArrayList<GridCell> all_t3b1 = new ArrayList<GridCell>();
     /* top3_bot1_through_top3_bot3.jpg */
     // Configuration index 1 in top3_bot1_through_top3_bot3.jpg
     temp = new GridCell(0, 3, 1);
@@ -428,6 +487,7 @@ public class Grid {
     temp.setT24(true);
     temp.location = "TWO"; //setting the final location
     table.put("3_1_ONE", temp); // only valid solution with these values and location
+    all_t3b1.add(temp);
 
     // 2
     temp = new GridCell(0, 3, 1);
@@ -437,6 +497,7 @@ public class Grid {
     temp.location = "ONE";
     temp.location2 = "THREE";
     table.put("3_1_ONE_THREE", temp);
+    all_t3b1.add(temp);
     
     // 3
     temp = new GridCell(0, 3, 1);
@@ -446,6 +507,7 @@ public class Grid {
     temp.setT35(true);
     temp.location = "FOUR";
     table.put("3_1_FIVE", temp);
+    all_t3b1.add(temp);
     
     // 4
     temp = new GridCell(0, 3, 1);
@@ -456,6 +518,7 @@ public class Grid {
     temp.location = "FOUR";
     temp.location2 = "SIX";
     table.put("3_1_THREE_FIVE", temp);
+    all_t3b1.add(temp);
     
     // 5
     temp = new GridCell(0, 3, 1);
@@ -465,6 +528,7 @@ public class Grid {
     temp.setT46(true);
     temp.location = "SIX";
     table.put("3_1_THREE", temp);
+    all_t3b1.add(temp);
     
     // 6 (Not sure if correct)
     temp = new GridCell(0, 3, 1);
@@ -474,6 +538,9 @@ public class Grid {
     temp.location = "TWO";
     temp.location2 = "FOUR";
     table.put("3_1_TWO_FOUR", temp);
+    all_t3b1.add(temp);
+
+    populateEnds("3_1", all_t3b1);
 
     // top3_bot2
     // 7
@@ -909,20 +976,29 @@ public class Grid {
 
       //1210
       //129
-      GridCell temp130 = new GridCell(0, 1, 2);
+      /*GridCell temp130 = new GridCell(0, 1, 2);
       temp129.setT24(true);
       temp129.setT35(true);
       temp129.setT56(true);
       temp129.location = "TWO";
       temp128.location = "FOUR";
       temp128.location = "SIX";
-      t1b2_loc3.add(temp129);
+      t1b2_loc3.add(temp129);*/
+
+      table.put("1_2_ONE", t1b2_loc1);
+      table.put("1_2_THREE", t1b2_loc3);
+      table.put("1_2_FIVE", t1b2_loc5); 
+
+      concatenate(t1b2_loc1, t1b2_loc3);
+      concatenate(t1b2_loc1, t1b2_loc5);
+      populateEnds("1_2", t1b2_loc1);
 
   }
 
   public static void main(String[] args) {
+      //Grid test = new Grid("[3,-1][1,2]");
       Grid test = new Grid("[3,-1][-1, 2][-1, 3][1, 2][3,-1]");
-      test.print();
+      System.out.println( "Trying to solve... " +test.solve());
 
    }
 

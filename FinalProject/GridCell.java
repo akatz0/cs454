@@ -135,11 +135,13 @@ public class GridCell {
     setT24(c.getT24());
     setT46(c.getT46());
     location = c.location;
-    edgeCount = c.edgeCount;
+    location2 = c.location2;
+    //edgeCount = c.edgeCount; we're not actually using currently...may be unneccesary
     //don't copy index value!!
   }
 
   private boolean checkOverlap(GridCell c){
+    if (c.index == 0) return true; // If its the first cell then don't worry about overlap
     if (c == null) return false;
     if (getT13() != c.getT13()) return false;
     if (getT35() != c.getT35()) return false;
@@ -147,20 +149,25 @@ public class GridCell {
   }
 
   public String configureKey(){
-    return topValue + "_" + bottomValue + "_" + location + "_" + location2 ;
+    if(location2 == null)
+      return topValue + "_" + bottomValue + "_" + location;
+    return topValue + "_" + bottomValue + "_" + location + "_" + location2;
   }
 
   public boolean makeSnake(Grid gridBoard, String one, String two){
+    location = one; location2 = two; // not sure if this is what we want to do...
+    System.out.println("Key: "+topValue + "_" + bottomValue + "_" + location);
       Object o = Grid.table.get(configureKey()); //See if entry exists in table
       GridCell c = null;
       ArrayList<GridCell> options;
+      if ( o == null) return false;
       if(o instanceof ArrayList){
         options = (ArrayList<GridCell>) o;
         for (GridCell g : options ) {
+          g.index=index; // update index so we can tell what index we were going to try this for
           if (checkOverlap(g)){
             c = g; // use the configuration that has matching overlap
           } else {
-            g.index=index; // update index so we can tell what index we were going to try this for
             gridBoard.pushSnakeStack(g); // push to stack
           }
         }
@@ -171,9 +178,12 @@ public class GridCell {
         }
       } else if ( o instanceof GridCell){
         c = (GridCell)o;
+        c.index = index;
         if (c.location == "FALSE") return false;
       }
-
+      System.out.println("GridCell index = " + index);
+    System.out.println("Top Value: "+c.topValue);
+    System.out.println("Bottom Value: "+c.bottomValue);
       if (!checkOverlap(c)) return false; // the overlap does not match the configuration retrieved from table
       c.index = index;
       update(c); // set the rest of the edges to match the configuration provided by table
