@@ -29,6 +29,7 @@ public class GridCell {
 
   String location; // keep track of where we are currently attempting to draw the snake from
   String location2;
+  String location3;
 
   int index; // should the gridcell know its own index in the grid?
   boolean t12, t13, t34, t35, t56, t24, t46; //transitions between adjacent gridpoints
