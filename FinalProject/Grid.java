@@ -1182,10 +1182,73 @@ public class Grid {
 
   }
 
+  // Return a string representation of the grid
+  public void graphicPrint(){
+    int initLength = gridList.size() * 3;
+    StringBuilder aboveRow = new StringBuilder(initLength);
+    StringBuilder topRow = new StringBuilder(initLength);
+    StringBuilder middleRow = new StringBuilder(initLength);
+    StringBuilder bottomRow = new StringBuilder(initLength);
+    StringBuilder belowRow = new StringBuilder(initLength);
+
+    for ( GridCell c : gridList) {
+      if(c.getT12()){
+        aboveRow.append(" ---- ");
+      } else {
+        aboveRow.append(" .... ");
+      }
+      if(c.getT13()){
+        topRow.append("| ");
+      } else {
+        topRow.append(". ");
+      }
+      topRow.append(c.topValue);
+      if(c.getT24()){
+        topRow.append(" |");
+      } else {
+        topRow.append(" .");
+      }
+      if(c.getT34()){
+        middleRow.append(" ---- ");
+      } else {
+        middleRow.append(" .... ");
+      }
+      if(c.getT35()){
+        bottomRow.append("| ");
+      } else {
+        bottomRow.append(". ");
+      }
+      bottomRow.append(c.bottomValue);
+      if(c.getT46()){
+        bottomRow.append(" |");
+      } else {
+        bottomRow.append(" .");
+      }
+      if(c.getT56()){
+        belowRow.append(" ---- ");
+      } else {
+        belowRow.append(" .... ");
+      }
+    }
+    System.out.println(aboveRow.toString());
+    System.out.println(topRow.toString());
+    System.out.println(middleRow.toString());
+    System.out.println(bottomRow.toString());
+    System.out.println(belowRow.toString());
+
+  }
+
   public static void main(String[] args) {
-      //Grid test = new Grid("[3,-1][1,2]");
-      Grid test = new Grid("[3,-1][-1, 2][-1, 3][1, 2][3,-1]");
-      System.out.println( "Trying to solve... " +test.solve());
+      Grid test = new Grid("[3,-1][1,2][1,-1][1,2]");
+      //Grid test = new Grid("[3,-1][-1, 2][-1, 3][1, 2][3,-1]");
+      boolean solution = test.solve();
+      if(solution) test.graphicPrint();
+      else System.out.println("No solution found");
+
+      test = new Grid("[1, 2][1, -1][2, -1]");
+      solution = test.solve();
+      if(solution) test.graphicPrint();
+      else System.out.println("No solution found");
 
    }
 
