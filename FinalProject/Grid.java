@@ -618,7 +618,7 @@ public class Grid {
     table.put("3_1_THREE", temp);
     all_t3b1.add(temp);
     
-    // 6 (Not sure if correct)
+    // 6
     temp = new GridCell(0, 3, 1);
     temp.setT12(true);
     temp.setT13(true);
@@ -720,8 +720,491 @@ public class Grid {
     t3b3.add(temp);
     populateEnds("3_3", t3b3);
     
-    // TODO: -1's
+	  // Top -1 Bottom -1
+	  ArrayList<GridCell> tneg1bneg1 = new ArrayList<GridCell>();
+	  
+	  // Starting at location ONE
+	  ArrayList<GridCell> tneg1bneg1_loc1 = new ArrayList<GridCell>();
+	  
+	  // Ending at location TWO
+	  temp = new GridCell(0, -1, -1);
+      temp.setT12(true);
+      temp.location = "TWO";
+	  tneg1bneg1_loc1.add(temp);
+	  
+	  temp = new GridCell(0, -1, -1);
+	  temp.setT13(true);
+	  temp.setT34(true);
+	  temp.setT24(true);
+	  temp.location = "TWO";
+	  tneg1bneg1_loc1.add(temp);
+	  
+	  temp = new GridCell(0, -1, -1);
+	  temp.setT13(true);
+	  temp.setT35(true);
+	  temp.setT56(true);
+	  temp.setT46(true);
+	  temp.setT24(true);
+	  temp.location = "TWO";
+	  tneg1bneg1_loc1.add(temp);
+	  
+	  // Ending at location FOUR
+	  temp = new GridCell(0, -1, -1);
+	  temp.setT12(true);
+	  temp.setT24(true);
+	  temp.location = "FOUR";
+	  tneg1bneg1_loc1.add(temp);
+	  
+	  temp = new GridCell(0, -1, -1);
+	  temp.setT13(true);
+	  temp.setT34(true);
+	  temp.location = "FOUR";
+	  tneg1bneg1_loc1.add(temp);
+	  
+	  temp = new GridCell(0, -1, -1);
+	  temp.setT13(true);
+	  temp.setT35(true);
+	  temp.setT56(true);
+	  temp.setT46(true);
+	  temp.location = "FOUR";
+	  tneg1bneg1_loc1.add(temp);
+	  
+	  // Ending at location SIX
+	  temp = new GridCell(0, -1, -1);
+	  temp.setT13(true);
+	  temp.setT35(true);
+	  temp.setT56(true);
+	  temp.location = "SIX";
+	  tneg1bneg1_loc1.add(temp);
+	  
+	  temp = new GridCell(0, -1, -1);
+	  temp.setT12(true);
+	  temp.setT24(true);
+	  temp.setT46(true);
+	  temp.location = "SIX";
+	  tneg1bneg1_loc1.add(temp);
+	  
+      temp = new GridCell(0, -1, -1);
+      temp.setT12(true);
+      temp.setT24(true);
+      temp.setT34(true);
+      temp.setT35(true);
+      temp.setT56(true);
+      temp.location = "SIX";
+	  tneg1bneg1_loc1.add(temp);
+	  
+	  temp = new GridCell(0, -1, -1);
+	  temp.setT13(true);
+	  temp.setT34(true);
+	  temp.setT46(true);
+	  temp.location = "SIX";
+	  tneg1bneg1_loc1.add(temp);
+	  
+	  table.put("-1_-1_ONE", tneg1bneg1_loc1);
+	  tneg1bneg1 = concatenate(tneg1bneg1, tneg1bneg1_loc1);
+	
+	  // Starting at location THREE
+	  ArrayList<GridCell> tneg1bneg1_loc3 = new ArrayList<GridCell>();
+	  
+	  // Ending at location TWO
+	  temp = new GridCell(0, -1, -1);
+	  temp.setT13(true);
+	  temp.setT12(true);
+	  temp.location = "TWO";
+	  tneg1bneg1_loc3.add(temp);
+	  
+	  temp = new GridCell(0, -1, -1);
+	  temp.setT34(true);
+	  temp.setT24(true);
+	  temp.location = "TWO";
+	  tneg1bneg1_loc3.add(temp);
+	  
+	  temp = new GridCell(0, -1, -1);
+	  temp.setT35(true);
+	  temp.setT56(true);
+	  temp.setT46(true);
+	  temp.setT24(true);
+	  temp.location = "TWO";
+	  tneg1bneg1_loc3.add(temp);
+	  
+	  // Ending at location FOUR
+	  temp = new GridCell(0, -1, -1);
+	  temp.setT34(true);
+	  temp.location = "FOUR";
+	  tneg1bneg1_loc3.add(temp);
+	  
+	  temp = new GridCell(0, -1, -1);
+	  temp.setT13(true);
+	  temp.setT12(true);
+	  temp.setT24(true);
+	  temp.location = "FOUR";
+	  tneg1bneg1_loc3.add(temp);
+	  
+	  temp = new GridCell(0, -1, -1);
+	  temp.setT35(true);
+	  temp.setT56(true);
+	  temp.setT46(true);
+	  temp.location = "FOUR";
+	  tneg1bneg1_loc3.add(temp);
+	  
+	  // Ending at location SIX
+	  temp = new GridCell(0, -1, -1);
+	  temp.setT35(true);
+	  temp.setT56(true);
+	  temp.location = "SIX";
+	  tneg1bneg1_loc3.add(temp);
+	  
+	  temp = new GridCell(0, -1, -1);
+	  temp.setT34(true);
+	  temp.setT46(true);
+	  temp.location = "SIX";
+	  tneg1bneg1_loc3.add(temp);
+	  
+	  temp = new GridCell(0, -1, -1);
+	  temp.setT13(true);
+	  temp.setT12(true);
+	  temp.setT24(true);
+	  temp.setT46(true);
+	  temp.location = "SIX";
+	  tneg1bneg1_loc3.add(temp);
+	  
+	  table.put("-1_-1_THREE", tneg1bneg1_loc3);
+	  tneg1bneg1 = concatenate(tneg1bneg1, tneg1bneg1_loc3);
+	  
+	  // Starting at location FIVE
+	  ArrayList<GridCell> tneg1bneg1_loc5 = new ArrayList<GridCell>();
+	  
+	  // Ending at location TWO
+	  temp = new GridCell(0, -1, -1);
+	  temp.setT24(true);
+	  temp.setT46(true);
+	  temp.setT56(true);
+	  temp.location = "TWO";
+	  tneg1bneg1_loc5.add(temp);
+	  
+	  temp = new GridCell(0, -1, -1);
+	  temp.setT12(true);
+	  temp.setT13(true);
+	  temp.setT35(true);
+	  temp.location = "TWO";
+	  tneg1bneg1_loc5.add(temp);
+	  
+      temp = new GridCell(0, -1, -1);
+      temp.setT12(true);
+      temp.setT13(true);
+      temp.setT34(true);
+      temp.setT46(true);
+      temp.setT56(true);
+      temp.location = "TWO";
+	  tneg1bneg1_loc5.add(temp);
+	  
+	  temp = new GridCell(0, -1, -1);
+	  temp.setT24(true);
+	  temp.setT34(true);
+	  temp.setT35(true);
+	  temp.location = "TWO";
+	  tneg1bneg1_loc5.add(temp);
+	  
+	  // Ending at location FOUR
+	  temp = new GridCell(0, -1, -1);
+	  temp.setT56(true);
+	  temp.setT46(true);
+	  temp.location = "FOUR";
+	  tneg1bneg1_loc5.add(temp);
+	  
+	  temp = new GridCell(0, -1, -1);
+	  temp.setT35(true);
+	  temp.setT34(true);
+	  temp.location = "FOUR";
+	  tneg1bneg1_loc5.add(temp);
+	  
+	  temp = new GridCell(0, -1, -1);
+	  temp.setT35(true);
+	  temp.setT13(true);
+	  temp.setT12(true);
+	  temp.setT24(true);
+	  temp.location = "FOUR";
+	  tneg1bneg1_loc5.add(temp);
+	  
+	  // Ending at location SIX
+	  temp = new GridCell(0, -1, -1);
+	  temp.setT56(true);
+	  temp.location = "SIX";
+	  tneg1bneg1_loc5.add(temp);
+	  
+	  temp = new GridCell(0, -1, -1);
+	  temp.setT35(true);
+	  temp.setT34(true);
+	  temp.setT46(true);
+	  temp.location = "SIX";
+	  tneg1bneg1_loc5.add(temp);
+	  
+	  temp = new GridCell(0, -1, -1);
+	  temp.setT35(true);
+	  temp.setT13(true);
+	  temp.setT12(true);
+	  temp.setT24(true);
+	  temp.setT46(true);
+	  temp.location = "SIX";
+	  tneg1bneg1_loc5.add(temp);
+	  
+	  table.put("-1_-1_FIVE", tneg1bneg1_loc5);
+	  tneg1bneg1 = concatenate(tneg1bneg1, tneg1bneg1_loc5);
+	  
+	  // TODO: Starting at ONE_THREE, ONE_FIVE, THREE_FIVE
+	  
+	  populateEnds("-1_-1", tneg1bneg1);
+	  
+	  // Top -1 Bottom 0
+	  ArrayList<GridCell> tneg1b0 = new ArrayList<GridCell>();
+	  
+	  // Starting at location ONE
+	  ArrayList<GridCell> tneg1b0_loc1 = new ArrayList<GridCell>();
+	  
+	  temp = new GridCell(0, -1, 0);
+	  temp.setT12(true);
+	  temp.location = "TWO";
+	  tneg1b0_loc1.add(temp);
+	  
+	  temp = new GridCell(0, -1, 0);
+	  temp.setT12(true);
+	  temp.setT24(true);
+	  temp.location = "FOUR";
+	  tneg1b0_loc1.add(temp);
+	  
+	  table.put("-1_0_ONE", tneg1b0_loc1);
+	  tneg1b0 = concatenate(tneg1b0, tneg1b0_loc1);
+	  
+	  // Starting at location THREE
+	  ArrayList<GridCell> tneg1b0_loc3 = new ArrayList<GridCell>();
+	  
+	  temp = new GridCell(0, -1, 0);
+	  temp.setT13(true);
+	  temp.setT12(true);
+	  temp.location = "TWO";
+	  tneg1b0_loc3.add(temp);
+	  
+	  temp = new GridCell(0, -1, 0);
+	  temp.setT13(true);
+	  temp.setT12(true);
+	  temp.setT24(true);
+	  temp.location = "FOUR";
+	  tneg1b0_loc3.add(temp);
+	  
+	  table.put("-1_0_THREE", tneg1b0_loc3);
+	  tneg1b0 = concatenate(tneg1b0, tneg1b0_loc3);
+	  
+	  populateEnds("-1_0", tneg1b0);
+	  
+	  // Top -1 Bottom 1
+	  ArrayList<GridCell> tneg1b1 = new ArrayList<GridCell>();
+	  
+	  // Starting at location ONE
+	  ArrayList<GridCell> tneg1b1_loc1 = new ArrayList<GridCell>();
+	  
+	  temp = new GridCell(0, -1, 1);
+	  temp.setT13(true);
+	  temp.setT34(true);
+	  temp.location = "FOUR";
+	  tneg1b1_loc1.add(temp);
+	  
+	  temp = new GridCell(0, -1, 1);
+	  temp.setT13(true);
+	  temp.setT34(true);
+	  temp.setT24(true);
+	  temp.location = "TWO";
+	  tneg1b1_loc1.add(temp);
+	  
+	  temp = new GridCell(0, -1, 1);
+	  temp.setT12(true);
+	  temp.setT24(true);
+	  temp.setT46(true);
+	  temp.location = "SIX";
+	  tneg1b1_loc1.add(temp);
+	  
+	  table.put("-1_1_ONE", tneg1b1_loc1);
+	  tneg1b1 = concatenate(tneg1b1, tneg1b1_loc1);
+	  
+	  // Starting at location THREE
+	  ArrayList<GridCell> tneg1b1_loc3 = new ArrayList<GridCell>();
+	  
+	  temp = new GridCell(0, -1, 1);
+	  temp.setT34(true);
+	  temp.location = "FOUR";
+	  tneg1b1_loc3.add(temp);
+	  
+	  temp = new GridCell(0, -1, 1);
+	  temp.setT34(true);
+	  temp.setT24(true);
+	  temp.location = "TWO";
+	  tneg1b1_loc3.add(temp);
+	  
+	  table.put("-1_1_THREE", tneg1b1_loc3);
+	  tneg1b1 = concatenate(tneg1b1, tneg1b1_loc3);
+	  
+	  // Starting at location FIVE
+	  ArrayList<GridCell> tneg1b1_loc5 = new ArrayList<GridCell>();
+	  
+	  temp = new GridCell(0, -1, 1);
+	  temp.setT56(true);
+	  temp.location = "SIX";
+	  tneg1b1_loc5.add(temp);
+	  
+	  table.put("-1_1_FIVE", tneg1b1_loc5);
+	  tneg1b1 = concatenate(tneg1b1, tneg1b1_loc5);
 
+	  populateEnds("-1_1", tneg1b1);
+	  
+	  // Top -1 Bottom 2
+	  ArrayList<GridCell> tneg1b2 = new ArrayList<GridCell>();
+	  
+	  // Starting at location ONE
+	  ArrayList<GridCell> tneg1b2_loc1 = new ArrayList<GridCell>();
+	  
+	  temp = new GridCell(0, -1, 2);
+	  temp.setT13(true);
+	  temp.setT35(true);
+	  temp.setT56(true);
+	  temp.location = "SIX";
+	  tneg1b2_loc1.add(temp);
+	  
+	  temp = new GridCell(0, -1, 2);
+	  temp.setT13(true);
+	  temp.setT34(true);
+	  temp.setT46(true);
+	  temp.location = "SIX";
+	  tneg1b2_loc1.add(temp);
+	  
+	  table.put("-1_2_ONE", tneg1b2_loc1);
+	  tneg1b2 = concatenate(tneg1b2, tneg1b2_loc1);
+	  
+	  // Starting at location THREE
+	  ArrayList<GridCell> tneg1b2_loc3 = new ArrayList<GridCell>();
+	  
+	  temp = new GridCell(0, -1, 2);
+	  temp.setT34(true);
+	  temp.setT46(true);
+	  temp.location = "SIX";
+	  tneg1b2_loc3.add(temp);
+	  
+	  temp = new GridCell(0, -1, 2);
+	  temp.setT35(true);
+	  temp.setT56(true);
+	  temp.location = "SIX";
+	  tneg1b2_loc3.add(temp);
+	  
+	  table.put("-1_2_THREE", tneg1b2_loc3);
+	  tneg1b2 = concatenate(tneg1b2, tneg1b2_loc3);
+	  
+	  // Starting at location FIVE
+	  ArrayList<GridCell> tneg1b2_loc5 = new ArrayList<GridCell>();
+	  
+	  temp = new GridCell(0, -1, 2);
+	  temp.setT56(true);
+	  temp.setT46(true);
+	  temp.location = "FOUR";
+	  tneg1b2_loc5.add(temp);
+	  
+	  temp = new GridCell(0, -1, 2);
+	  temp.setT56(true);
+	  temp.setT46(true);
+	  temp.setT24(true);
+	  temp.location = "TWO";
+	  tneg1b2_loc5.add(temp);
+	  
+	  temp = new GridCell(0, -1, 2);
+	  temp.setT35(true);
+	  temp.setT34(true);
+	  temp.location = "FOUR";
+	  tneg1b2_loc5.add(temp);
+	  
+	  temp = new GridCell(0, -1, 2);
+	  temp.setT35(true);
+	  temp.setT34(true);
+	  temp.setT24(true);
+	  temp.location = "TWO";
+	  tneg1b2_loc5.add(temp);
+	  
+	  temp = new GridCell(0, -1, 2);
+	  temp.setT35(true);
+	  temp.setT13(true);
+	  temp.setT12(true);
+	  temp.setT24(true);
+	  temp.setT46(true);
+	  temp.location = "SIX";
+	  tneg1b2_loc5.add(temp);
+	  
+	  table.put("-1_2_FIVE", tneg1b2_loc5);
+	  tneg1b2 = concatenate(tneg1b2, tneg1b2_loc5);
+	  
+	  // TODO: Starting at ONE_THREE, ONE_FIVE, THREE_FIVE
+	  
+	  populateEnds("-1_2", tneg1b2);
+	  
+	  // Top -1 Bottom 3
+	  ArrayList<GridCell> tneg1b3 = new ArrayList<GridCell>();
+	  
+	  // Starting at location ONE
+	  ArrayList<GridCell> tneg1b3_loc1 = new ArrayList<GridCell>();
+	  
+	  temp = new GridCell(0, -1, 3);
+	  temp.setT13(true);
+	  temp.setT35(true);
+	  temp.setT56(true);
+	  temp.setT46(true);
+	  temp.location = "FOUR";
+	  tneg1b3_loc1.add(temp);
+	  
+	  temp = new GridCell(0, -1, 3);
+	  temp.setT12(true);
+	  temp.setT24(true);
+	  temp.setT34(true);
+	  temp.setT35(true);
+	  temp.setT56(true);
+	  temp.location = "SIX";
+	  tneg1b3_loc1.add(temp);
+	  
+	  table.put("-1_3_ONE", tneg1b3_loc1);
+	  tneg1b3 = concatenate(tneg1b3, tneg1b3_loc1);
+	  
+	  // Starting at location THREE
+	  ArrayList<GridCell> tneg1b3_loc3 = new ArrayList<GridCell>();
+	  
+	  temp = new GridCell(0, -1, 3);
+	  temp.setT35(true);
+	  temp.setT56(true);
+	  temp.setT46(true);
+	  temp.location = "FOUR";
+	  tneg1b3_loc3.add(temp);
+	  
+	  temp = new GridCell(0, -1, 3);
+	  temp.setT35(true);
+	  temp.setT56(true);
+	  temp.setT46(true);
+	  temp.setT24(true);
+	  temp.location = "TWO";
+	  tneg1b3_loc3.add(temp);
+	  
+	  table.put("-1_3_THREE", tneg1b3_loc3);
+	  tneg1b3 = concatenate(tneg1b3, tneg1b3_loc3);
+	  
+	  // Starting at location FIVE
+	  ArrayList<GridCell> tneg1b3_loc5 = new ArrayList<GridCell>();
+	  
+	  temp = new GridCell(0, -1, 3);
+	  temp.setT35(true);
+	  temp.setT34(true);
+	  temp.setT46(true);
+	  temp.location = "SIX";
+	  tneg1b3_loc5.add(temp);
+	  
+	  table.put("-1_3_FIVE", tneg1b3_loc5);
+	  tneg1b3 = concatenate(tneg1b3, tneg1b3_loc5);
+	  
+	  // TODO: Starting at ONE_THREE, ONE_FIVE, THREE_FIVE
+	  
+	  populateEnds("-1_3", tneg1b3);
+	  
       /*  For numbering diagram see TOBneg1_through_T1B2.pdf */
       ArrayList<GridCell> t0bneg1 = new ArrayList<GridCell>();
       // Top 0  Bottom -1
