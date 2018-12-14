@@ -53,7 +53,8 @@ public class GridCell {
       bottomValue = bottom;
       edgeCount = 0;
       index = i;
-      location = null;
+      if (index == 0) location = "START";
+      else location = null;
       topCompleted = false;
       bottomCompleted = false;
       //return this;
@@ -155,19 +156,25 @@ public class GridCell {
     return topValue + "_" + bottomValue + "_" + location + "_" + location2;
   }
 
-  public boolean makeSnake(Grid gridBoard, String one, String two){
-    location = one; location2 = two; // not sure if this is what we want to do...
-    System.out.println("Key: "+topValue + "_" + bottomValue + "_" + location);
-      Object o = Grid.table.get(configureKey()); //See if entry exists in table
-      GridCell c = null;
+    public boolean makeSnake(Grid gridBoard, int index){
+      boolean result = false;
+      boolean setConfig = false;
+      String key = configureKey();
+      System.out.println("Key: "+key);
+      Object o = gridBoard.table.get(key); //See if entry exists in table
+      GridCell c = gridBoard.gridList.get(index) ;
       ArrayList<GridCell> options;
       if ( o == null) return false;
       if(o instanceof ArrayList){
         options = (ArrayList<GridCell>) o;
         for (GridCell g : options ) {
-          g.index=index; // update index so we can tell what index we were going to try this for
-          if (checkOverlap(g)){
-            c = g; // use the configuration that has matching overlap
+          if (checkOverlap(g) && !setConfig){
+            //System.out.println("overlap matches ");
+            //System.out.println("Existing cell config: ");c.print();
+            //System.out.println("New cell config: ");g.print();
+            c.update(g); // use the configuration that has matching overlap
+            setConfig = true;
+            result = true;
           } else {
             gridBoard.pushSnakeStack(g); // push to stack
           }
@@ -175,26 +182,37 @@ public class GridCell {
         if (c == null){
           //we looped through all options and none matched
           //so we can't proceed with what the path has been so far
-          return false;
+          result = false;
         }
       } else if ( o instanceof GridCell){
-        c = (GridCell)o;
-        c.index = index;
-        if (c.location == "FALSE") return false;
+        GridCell g = (GridCell)o;
+        if (g.location == "FALSE") return false;
+        if (checkOverlap(g)){
+            //System.out.println("overlap matches ");
+            //System.out.println("Existing cell config: ");c.print();
+            //System.out.println("New cell config: ");g.print();
+            c.update(g); // use the configuration that has matching overlap
+            result = true;
+          } else {
+            result = false;
+          }
       }
-      System.out.println("GridCell index = " + index);
-    System.out.println("Top Value: "+c.topValue);
-    System.out.println("Bottom Value: "+c.bottomValue);
-      if (!checkOverlap(c)) return false; // the overlap does not match the configuration retrieved from table
-      c.index = index;
-      update(c); // set the rest of the edges to match the configuration provided by table
-      return true;
+
+      return result;
   }
 
   public void print(){
     System.out.println("GridCell index = " + index);
     System.out.println("Top Value: "+topValue);
     System.out.println("Bottom Value: "+bottomValue);
+    System.out.println("T12 "+getT12());
+    System.out.println("T13 "+getT13());
+    System.out.println("T35 "+getT35());
+    System.out.println("T34 "+getT34());
+    System.out.println("T56 "+getT56());
+    System.out.println("T46 "+getT46());
+    System.out.println("location "+location);
+    System.out.println("location2 "+location2);
   }
 
   public static void main(String[] args) {

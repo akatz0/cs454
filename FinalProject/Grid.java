@@ -45,9 +45,9 @@ public class Grid {
   public boolean solve(){
     int debugging_counter=0;
     int currentIndex = 0;
-    GridCell currentCell = gridList.get(0);
+    GridCell currentCell = gridList.get(currentIndex);
     //currentCell.setLocation = GridPoint.ONE; //Initialize snake to start in upper left corner of the grid
-    boolean result = currentCell.makeSnake(this, "START", null);
+    boolean result = currentCell.makeSnake(this, currentIndex);
     while (result){
       // move to next cell
       currentIndex++;
@@ -62,7 +62,7 @@ public class Grid {
       GridCell prevCell = currentCell;
       currentCell = gridList.get(currentIndex);
       copyOverlap(prevCell, currentCell);
-      result = currentCell.makeSnake(this, currentCell.location, currentCell.location2);
+      result = currentCell.makeSnake(this, currentIndex);
 
       //  no solution found for current cell lets backtrack...
       while (!result && debugging_counter<100){ // while you haven't found a solution keep looping...
@@ -77,8 +77,8 @@ public class Grid {
         if( currentIndex < gridList.size()){
           currentCell = gridList.get(currentIndex);
           copyOverlap(prevCell, currentCell);
-          result = currentCell.makeSnake(this, currentCell.location, currentCell.location2);
-        } else { break; /*return false?? */ }
+          result = currentCell.makeSnake(this, currentIndex);
+        } else { return true; }// ???? }
       }
 
     }
@@ -1084,6 +1084,7 @@ public class Grid {
       ArrayList<GridCell> t1b2_loc1 = new ArrayList<GridCell>(); //TODO add to hash table, key "1_2_ONE"
       ArrayList<GridCell> t1b2_loc3 = new ArrayList<GridCell>(); //TODO add to hash table, key "1_2_THREE"
       ArrayList<GridCell> t1b2_loc5 = new ArrayList<GridCell>(); //TODO add to hash table, key "1_2_FIVE"
+      ArrayList<GridCell> t1b2_15 = new ArrayList<GridCell>(); //TODO add to hash table, key "1_2_ONE_FIVE"
 
       GridCell temp121 = new GridCell(0, 1, 2);
       temp121.setT13(true);
@@ -1113,8 +1114,7 @@ public class Grid {
       temp124.setT56(true);
       temp124.location2 = "FOUR";
       temp124.location = "TWO";
-      table.put("1_2_ONE_FIVE", temp124);
-      t1b2_loc1.add(temp124);
+      t1b2_15.add(temp124);
 
       //125
       GridCell temp125 = new GridCell(0, 1, 2);
@@ -1162,22 +1162,30 @@ public class Grid {
       t1b2_loc5.add(temp129);
 
       //1210
-      //129
-      /*GridCell temp130 = new GridCell(0, 1, 2);
-      temp129.setT24(true);
-      temp129.setT35(true);
-      temp129.setT56(true);
-      temp129.location = "TWO";
-      temp128.location = "FOUR";
-      temp128.location = "SIX";
-      t1b2_loc3.add(temp129);*/
+      GridCell temp1210 = new GridCell(0, 1, 2);
+      temp1210.setT24(true);
+      temp1210.setT35(true);
+      temp1210.setT56(true);
+      temp1210.location = "FOUR";
+      temp1210.location2 = "SIX";
+      t1b2_loc3.add(temp1210);
+
+      //1210 reverse
+      GridCell temp1210rev = new GridCell(0, 1, 2);
+      temp1210rev.setT13(true);
+      temp1210rev.setT46(true);
+      temp1210rev.setT56(true);
+      temp1210rev.location = "FOUR";
+      t1b2_15.add(temp1210rev);
 
       table.put("1_2_ONE", t1b2_loc1);
       table.put("1_2_THREE", t1b2_loc3);
       table.put("1_2_FIVE", t1b2_loc5); 
+      table.put("1_2_ONE_FIVE", t1b2_15); 
 
-      concatenate(t1b2_loc1, t1b2_loc3);
-      concatenate(t1b2_loc1, t1b2_loc5);
+      t1b2_loc1 = concatenate(t1b2_loc1, t1b2_loc3);
+      t1b2_loc1 = concatenate(t1b2_loc1, t1b2_loc5);
+      t1b2_loc1 = concatenate(t1b2_loc1, t1b2_15);
       populateEnds("1_2", t1b2_loc1);
 
   }
@@ -1240,12 +1248,13 @@ public class Grid {
 
   public static void main(String[] args) {
       Grid test = new Grid("[3,-1][1,2][1,-1][1,2]");
+      test.graphicPrint();
       //Grid test = new Grid("[3,-1][-1, 2][-1, 3][1, 2][3,-1]");
       boolean solution = test.solve();
       if(solution) test.graphicPrint();
       else System.out.println("No solution found");
 
-      test = new Grid("[1, 2][1, -1][2, -1]");
+      test = new Grid("[1, 3][1, 2][1, -1][2, -1][1,1]");
       solution = test.solve();
       if(solution) test.graphicPrint();
       else System.out.println("No solution found");
