@@ -34,6 +34,10 @@ public class Grid {
     nextSnakeOption.push(c);
   }
 
+  public GridCell popSnakeStack(){
+    return nextSnakeOption.pop();
+  }
+
   // Replace a cell in the list
   // Potentially dangerous method...
   private void replaceCell(int index, GridCell cell){
@@ -46,7 +50,6 @@ public class Grid {
     int debugging_counter=0;
     int currentIndex = 0;
     GridCell currentCell = gridList.get(currentIndex);
-    //currentCell.setLocation = GridPoint.ONE; //Initialize snake to start in upper left corner of the grid
     boolean result = currentCell.makeSnake(this, currentIndex);
     while (result){
       // move to next cell
@@ -58,7 +61,6 @@ public class Grid {
       if(currentIndex == gridList.size() -1){ // if its last cell in the board extra options are available
         currentCell.location = "END";
       }
-
       GridCell prevCell = currentCell;
       currentCell = gridList.get(currentIndex);
       copyOverlap(prevCell, currentCell);
@@ -66,19 +68,21 @@ public class Grid {
 
       //  no solution found for current cell lets backtrack...
       while (!result && debugging_counter<100){ // while you haven't found a solution keep looping...
+        System.out.println("Solving... ");graphicPrint();
         if(nextSnakeOption.isEmpty()) return false; // if there are no more options to try then grid has no alternate solutions
         GridCell temp = nextSnakeOption.pop(); // get the next configuration to try
         debugging_counter++;
 
-        replaceCell(currentIndex, temp);
+        replaceCell(temp.index, temp);
+        while(!currentCell.isValid(this, temp.index)){
+          if(nextSnakeOption.isEmpty()) return false; // if there are no more options to try then grid has no alternate solutions
+          temp = nextSnakeOption.pop(); // get the next configuration to try
+          replaceCell(temp.index, temp);
+        } 
 
-        prevCell = gridList.get(currentIndex);
-        currentIndex++; //try again from the one after the one you just changed
-        if( currentIndex < gridList.size()){
-          currentCell = gridList.get(currentIndex);
-          copyOverlap(prevCell, currentCell);
-          result = currentCell.makeSnake(this, currentIndex);
-        } else { return true; }// ???? }
+        // found a configuration that is valid... trying to continue with solution
+        currentIndex = temp.index;
+        result = true;
       }
 
     }
@@ -1693,7 +1697,10 @@ public class Grid {
       } else {
         topRow.append(". ");
       }
-      topRow.append(c.topValue);
+      if(c.topValue == -1)
+        topRow.append(c.topValue);
+      else
+        topRow.append(" " + c.topValue);
       if(c.getT24()){
         topRow.append(" |");
       } else {
@@ -1709,7 +1716,10 @@ public class Grid {
       } else {
         bottomRow.append(". ");
       }
-      bottomRow.append(c.bottomValue);
+      if(c.bottomValue == -1)
+        bottomRow.append(c.bottomValue);
+      else
+        bottomRow.append(" " + c.bottomValue);
       if(c.getT46()){
         bottomRow.append(" |");
       } else {

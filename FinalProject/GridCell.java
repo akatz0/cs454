@@ -142,11 +142,17 @@ public class GridCell {
     //don't copy index value!!
   }
 
-  private boolean checkOverlap(GridCell c){
-    if (c.index == 0) return true; // If its the first cell then don't worry about overlap
-    if (c == null) return false;
-    if (getT13() != c.getT13()) return false;
-    if (getT35() != c.getT35()) return false;
+  private boolean checkOverlap(GridCell existing, GridCell possible){
+    if (existing.index == 0) return true; // If its the first cell then don't worry about overlap
+    if (possible == null) return false;
+    if (existing.getT13() != possible.getT13()) return false;
+    if (existing.getT35() != possible.getT35()) return false;
+    return true;
+  }
+
+  private boolean checkContinuity(GridCell previous, GridCell current){
+    if (previous.getT24() != current.getT13()) return false;
+    if (previous.getT46() != current.getT35()) return false;
     return true;
   }
 
@@ -159,8 +165,9 @@ public class GridCell {
     public boolean makeSnake(Grid gridBoard, int index){
       boolean result = false;
       boolean setConfig = false;
+      boolean continuous = true;
       String key = configureKey();
-      System.out.println("Key: "+key);
+      //System.out.println("Key: "+key);
       Object o = gridBoard.table.get(key); //See if entry exists in table
       GridCell c = gridBoard.gridList.get(index) ;
       ArrayList<GridCell> options;
@@ -168,18 +175,18 @@ public class GridCell {
       if(o instanceof ArrayList){
         options = (ArrayList<GridCell>) o;
         for (GridCell g : options ) {
-          if (checkOverlap(g) && !setConfig){
-            //System.out.println("overlap matches ");
-            //System.out.println("Existing cell config: ");c.print();
-            //System.out.println("New cell config: ");g.print();
+          if( index > 0)
+            continuous = checkContinuity( gridBoard.gridList.get(index-1), g);
+          if (checkOverlap(c, g) && continuous && !setConfig){
             c.update(g); // use the configuration that has matching overlap
             setConfig = true;
             result = true;
           } else {
+            g.index = index; // set index so we know where we were going to try this configuration
             gridBoard.pushSnakeStack(g); // push to stack
           }
         }
-        if (c == null){
+        if (setConfig == false){
           //we looped through all options and none matched
           //so we can't proceed with what the path has been so far
           result = false;
@@ -187,18 +194,43 @@ public class GridCell {
       } else if ( o instanceof GridCell){
         GridCell g = (GridCell)o;
         if (g.location == "FALSE") return false;
-        if (checkOverlap(g)){
-            //System.out.println("overlap matches ");
-            //System.out.println("Existing cell config: ");c.print();
-            //System.out.println("New cell config: ");g.print();
+        if (checkOverlap(c, g)){
             c.update(g); // use the configuration that has matching overlap
             result = true;
           } else {
+            //System.out.println("NO SOLUTION works with this config so far. try back tracking");
             result = false;
           }
-      }
+      } else { System.out.println("Object in table not recognized format."); }
 
       return result;
+  }
+
+  public boolean isValid(Grid gridBoard, int index){
+    boolean result = true;
+    GridCell c = gridBoard.gridList.get(index);
+    if (index > 0 ){
+      result = checkContinuity( gridBoard.gridList.get(index-1), c);
+    } else {
+      return true; /// in theory anything should be valid for first cell
+    }
+    if ( topValue != -1){
+      int topCount = 0;
+      if(getT12()) topCount++;
+      if(getT13()) topCount++;
+      if(getT34()) topCount++;
+      if(getT24()) topCount++;
+      if(topCount != topValue) return false;
+    } 
+    if (bottomValue != -1){
+      int bottomCount = 0;
+      if(getT34()) bottomCount++;
+      if(getT35()) bottomCount++;
+      if(getT56()) bottomCount++;
+      if(getT46()) bottomCount++;
+      if(bottomValue != bottomCount) return false;
+    }
+    return result;
   }
 
   public void print(){
